@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProductRequest;
 use App\Models\Products;
 use Illuminate\Http\Request;
+use File;
 
 class ProductsController extends Controller
 {
@@ -38,9 +39,14 @@ class ProductsController extends Controller
     public function store(ProductRequest $request)
     {
         $data['name'] = $request->name;
-        $imageName = time() . '.' . $request->image->extension();
-        $request->image->move(public_path('images'), $imageName);
-        $data['image'] = $imageName;
+        $data['price'] = $request->price;
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('/uploads/productImages/');
+            $image->move($destinationPath, $name);
+        }
+        $data['image'] = $name;
         Products::create($data);
         return redirect()->route('products.index');
     }
@@ -78,6 +84,24 @@ class ProductsController extends Controller
     public function update(ProductRequest $request, $id)
     {
         $product = Products::find($id);
+        if ($request->hasFile('image')) {
+            $path = public_path() . '/uploads/productImages/';
+
+            //code for remove old file
+            $image_path = public_path() . '/uploads/productImages/' . $product->image;
+            if (file_exists($image_path)) {
+                File::delete($image_path);
+            }
+
+            //upload new file
+            $image = $request->file('image');
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('/uploads/productImages/');
+            $image->move($destinationPath, $name);
+
+            //for update in table
+            $product->update(['image' => $name]);
+        }
         $product->name = $request->name;
         $product->save();
         return redirect()->route('products.index');
@@ -92,6 +116,11 @@ class ProductsController extends Controller
     public function destroy($id)
     {
         $product = Products::find($id);
+        $image_path = public_path() . '/uploads/productImages/' . $product->image;
+        // dd($image_path);
+        if (file_exists($image_path)) {
+            File::delete($image_path);
+        }
         $product->delete();
         return redirect()->route('products.index');
     }

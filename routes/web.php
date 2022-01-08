@@ -40,6 +40,13 @@ Route::get('/products/{id}', [ProductsController::class, 'destroy'])->name('prod
 Route::get('/products/{id}/edit', [ProductsController::class, 'edit'])->name('products.edit');
 Route::put('/products/{id}', [ProductsController::class, 'update'])->name('products.update');
 
+Route::get('/comments', [commentsController::class, 'index'])->name('comments.index');
+Route::get('/comments/create', [commentsController::class, 'create'])->name('comments.create');
+Route::post('/comments', [commentsController::class, 'store'])->name('comments.store');
+Route::get('/comments/{id}', [commentsController::class, 'destroy'])->name('comments.destroy');
+Route::get('/comments/{id}/edit', [commentsController::class, 'edit'])->name('comments.edit');
+Route::put('/comments/{id}', [commentsController::class, 'update'])->name('comments.update');
+
 
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {

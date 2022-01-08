@@ -22,6 +22,8 @@ class ProductSeeder extends Seeder
                 'name' => 'MI A2',
                 'description' => 'phone',
                 'price' => 30000,
+                'brand_id' => 2,
+                'status' => 0,
             ]);
         }
     }
