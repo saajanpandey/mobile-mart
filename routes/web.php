@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\LoginController as AdminLoginController;
 use App\Http\Controllers\Auth\LoginController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,12 +24,13 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('logout', [LoginController::class, 'logout']);
 
-Route::get('/admin/login', [LoginController::class, 'showAdminLoginForm']);
-Route::post('/admin/login', [LoginController::class, 'adminLogin'])->name('admin.login');
+Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
+    Route::get('/login', [AdminLoginController::class, 'showAdminLoginForm'])->name('admin.view');
+    Route::post('/login', [AdminLoginController::class, 'adminLogin'])->name('admin.login');
 
-Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => 'auth:admin'], function () {
+    Route::group(['middleware' => 'auth:admin'], function () {
 
-    Route::view('/dashboard', 'admin.dashBoard');
-
-    
+        Route::view('/dashboard', 'admin.dashBoard');
+        Route::get('/logout', [AdminLoginController::class, 'logout']);
+    });
 });
