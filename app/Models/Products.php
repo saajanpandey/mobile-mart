@@ -9,15 +9,15 @@ class Products extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'price', 'description', 'image', 'brand_id'];
+    protected $fillable = ['name', 'price', 'description', 'image', 'brand_id', 'status'];
 
     public function brand()
     {
-        $this->belongsTo(Brand::class, 'brand_id', 'id');
+        return  $this->belongsTo(Brand::class, 'brand_id', 'id');
     }
 
     public function reviews()
     {
-        $this->hasMany(Review::class);
+        return  $this->hasMany(Review::class);
     }
 }
