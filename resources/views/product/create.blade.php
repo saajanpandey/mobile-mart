@@ -1,21 +1,69 @@
+  @extends('admin.sidebar')
+  @section('main-content')
 
-<div class="form">
-    <form action="{{route('products.store')}}" method="POST" enctype='multipart/form-data'>
-        @csrf
-    <div class="title">Welcome</div>
-    <div class="subtitle">Let's create your account!</div>
-    <div class="input-container ic1">
-      <div class="cut"></div>
-      <label for="firstname" class="placeholder" >Product name</label>
-      <input id="email" class="input" type="text" placeholder=" " name="name"/>
-    </div>
-    <div class="cut"></div>
-      <label for="firstname" class="placeholder" >Price</label>
-      <input id="email" class="input" type="text" placeholder=" " name="price"/>
-    </div><div class="cut"></div>
-    <label for="firstname" class="placeholder" >Image</label>
-    <input id="email" class="input" type="file" placeholder=" " name="image"/>
-  </div>
-    <button type="text" class="submit">submit</button>
-</form>
-  </div>
+   <div class="mx-auto" style="width: 700px;">
+     <div class="card shadow">
+         <div class="card-header">
+           Create Product
+           <a href="{{route('products.index')}}"><button class="close" type="button">
+            <span aria-hidden="true">×</span>
+        </button></a>
+         </div>
+         <div class="card-body ">
+             <form action="{{route('products.store')}}" method="POST" enctype='multipart/form-data'>
+                 @csrf
+                 <div class="form-group row">
+                    <label  class="col-sm-2 col-form-label">Product Name</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" name="name" >
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label  class="col-sm-2 col-form-label">Product Price</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" name="price">
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label  class="col-sm-2 col-form-label">Product Brand</label>
+                    <div class="col-sm-10">
+                        <select class="custom-select" id="inputGroupSelect01" name="brand_id">
+                            @foreach ($brands as $brand)
+                            <option value="{{$brand->id}}">{{$brand->name}}</option>
+                            @endforeach
+                          </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label  class="col-sm-2 col-form-label">Product Description</label>
+                    <div class="col-sm-10">
+                      <textarea name="description" id="" cols="30" rows="10" ></textarea>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label  class="col-sm-2 col-form-label">Product Status</label>
+                    <div class="col-sm-10">
+                        <select class="custom-select" id="inputGroupSelect01" name="status">
+                            <option value="1">Enable</option>
+                            <option value="0">Disable</option>
+                          </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Product Image</label>
+                    <div class="col-sm-10">
+                        <input type="file" class="form-control" name="image"/>
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+               </form>
+         </div>
+       </div>
+   </div>
+
+
+ </div>
+ @endsection

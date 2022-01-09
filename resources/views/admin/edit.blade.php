@@ -6,10 +6,11 @@ Edit Profile
 
 <div class="mx-auto" style="width: 700px;">
     <div class="card shadow">
-        <div class="card-header d-flex">
-        <h6 class="m-0 font-weight-bold text-primary mr-auto">Edit Profile</h6>
-          <a href="{{route('admin.dash')}}"><button type="" class="btn btn-danger btn-sm">Close</button></a>
-        </div>
+        <div class="card-header">
+        Edit Profile
+        <a href="{{route('admin.dash')}}"><button class="close" type="button">
+            <span aria-hidden="true">×</span>
+        </button></a>        </div>
         <div class="card-body ">
             <form action="{{route('admin.update',Auth::user()->id)}}" method="POST">
                 @method('PUT')

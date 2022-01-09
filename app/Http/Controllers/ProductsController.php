@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductRequest;
+use App\Models\Brand;
 use App\Models\Products;
 use Illuminate\Http\Request;
 use File;
@@ -27,7 +28,8 @@ class ProductsController extends Controller
      */
     public function create()
     {
-        return view('product.create');
+        $brands = Brand::all();
+        return view('product.create', compact('brands'));
     }
 
     /**
@@ -38,8 +40,11 @@ class ProductsController extends Controller
      */
     public function store(ProductRequest $request)
     {
+        // dd($request->all());
         $data['name'] = $request->name;
         $data['price'] = $request->price;
+        $data['brand_id'] = $request->brand_id;
+        $data['status'] = $request->status;
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $name = time() . '.' . $image->getClientOriginalExtension();
@@ -47,6 +52,7 @@ class ProductsController extends Controller
             $image->move($destinationPath, $name);
         }
         $data['image'] = $name;
+        $data['description'] = $request->description;
         Products::create($data);
         return redirect()->route('products.index');
     }
@@ -71,7 +77,8 @@ class ProductsController extends Controller
     public function edit($id)
     {
         $product = Products::find($id);
-        return view('product.edit', compact('product'));
+        $brands = Brand::all();
+        return view('product.edit', compact('product', 'brands'));
     }
 
     /**
@@ -83,6 +90,7 @@ class ProductsController extends Controller
      */
     public function update(ProductRequest $request, $id)
     {
+        // dd($request->all());
         $product = Products::find($id);
         if ($request->hasFile('image')) {
             $path = public_path() . '/uploads/productImages/';
@@ -103,6 +111,9 @@ class ProductsController extends Controller
             $product->update(['image' => $name]);
         }
         $product->name = $request->name;
+        $product->status = $request->status;
+        $product->brand_id = $request->brand_id;
+        $product->description = $request->description;
         $product->save();
         return redirect()->route('products.index');
     }
