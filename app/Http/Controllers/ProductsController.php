@@ -54,7 +54,7 @@ class ProductsController extends Controller
         $data['image'] = $name;
         $data['description'] = $request->description;
         Products::create($data);
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('success', 'The data was saved successfully');;
     }
 
     /**
@@ -115,7 +115,7 @@ class ProductsController extends Controller
         $product->brand_id = $request->brand_id;
         $product->description = $request->description;
         $product->save();
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('success', 'The data was updated successfully');;
     }
 
     /**
@@ -133,6 +133,6 @@ class ProductsController extends Controller
             File::delete($image_path);
         }
         $product->delete();
-        return redirect()->route('products.index');
+        return redirect()->route('products.index')->with('success', 'The data was deleted successfully');;
     }
 }

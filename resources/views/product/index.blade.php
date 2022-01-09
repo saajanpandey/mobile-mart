@@ -39,7 +39,7 @@
                         <tr>
                             <td>{{$product->name}}</td>
                             <td>{{$product->price}}</td>
-                            <td>{{$product->brand->name}}</td>
+                            <td>{{$product->brand->name??'-'}}</td>
                             <td>{{$product->image}}</td>
                             <td>
                                 @if($product->status==0)

@@ -4,6 +4,19 @@
 
 <body id="page-top" class="d-flex flex-column min-vh-100">
 
+
+    @if (session()->has('success'))
+    <div class="alert alert-dismissable alert-success">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>
+            {!! session()->get('success') !!}
+        </strong>
+    </div>
+@endif
+
+
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -15,7 +28,7 @@
                 {{-- <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div> --}}
-                <div class="sidebar-brand-text mx-3">Mobile Pasal</div>
+                <div class="sidebar-brand-text mx-3">Mobile Mart</div>
             </a>
 
             <!-- Divider -->

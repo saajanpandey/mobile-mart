@@ -39,7 +39,7 @@ class BrandController extends Controller
     {
         $data['name'] = $request->name;
         Brand::create($data);
-        return redirect()->route('brands.index');
+        return redirect()->route('brands.index')->with('success', 'The data was saved successfully');
     }
 
     /**
@@ -77,7 +77,7 @@ class BrandController extends Controller
         $brand = Brand::find($id);
         $brand->name = $request->name;
         $brand->save();
-        return redirect()->route('brands.index');
+        return redirect()->route('brands.index')->with('success', 'The data was updated successfully');;
     }
 
     /**
@@ -90,6 +90,6 @@ class BrandController extends Controller
     {
         $brand = Brand::find($id);
         $brand->delete();
-        return redirect()->route('brands.index');
+        return redirect()->route('brands.index')->with('success', 'The data was deleted successfully');;
     }
 }

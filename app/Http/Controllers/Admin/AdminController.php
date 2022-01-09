@@ -76,7 +76,7 @@ class AdminController extends Controller
         $admin = Admin::find($id);
         $admin->name = $request->name;
         $admin->save();
-        return redirect()->route('admin.dash');
+        return redirect()->route('admin.dash')->with('success', 'The data was updated successfully');;
     }
 
     /**
