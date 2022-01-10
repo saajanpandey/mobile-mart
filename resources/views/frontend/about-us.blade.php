@@ -22,7 +22,7 @@
                     <div class="col-lg-6 col-md-12 d-flex align-items-center">
                         <div class="overview-content-2">
 							<h4>Welcome To</h4>
-                            <h2>Our Sabuj Cha Store!</h2>
+                            <h2>Mobile Pasal</h2>
                             <p class="peragraph-blog">Phuler Shop is a premium HTML template designed and develoved from the ground up with the sole purpose of helping you create an astonishing, the beautiful and user friendly website that will boost your product’s sales.</p>
                             <p>The theme design package provides a complete Magento theme set for your online store according to your desired theme. This includes all Magento themes that are required for your online store's successful implementation.</p>
                             <div class="overview-btn mt-40">

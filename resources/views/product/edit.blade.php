@@ -51,7 +51,7 @@
                   <div class="form-group row">
                     <label  class="col-sm-2 col-form-label">Product Description</label>
                     <div class="col-sm-10">
-                      <textarea name="description" id="" cols="30" rows="10"  class="@error('description') is-invalid @enderror">{{$product->description}}</textarea>
+                      <textarea name="description" id="my-editor" cols="30" rows="10"  class=" my-editor @error('description') is-invalid @enderror">{{$product->description}}</textarea>
                       @error('description')
                       <span class="invalid-feedback" role="alert">
                           <strong>{{ $message }}</strong>

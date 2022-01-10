@@ -22,34 +22,53 @@
                         <div class="col-lg-6">
                             <div class="small-title mb-30">
                                 <h2>Contact Form</h2>
-                                <p>There are many variations of passages of Lorem Ipsum available, but the majority Lorem Ipsum available.</p>
+                                <p>For available queries and problems</p>
                             </div>
-                            <form id="contact-form" action="https://d29u17ylf1ylz9.cloudfront.net/sabujcha/assets/mail.php" method="post">
+                            <form  action="{{route('contact.store')}}" method="POST">
+                                @csrf
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="contact-form-style mb-20">
-                                            <input name="name" placeholder="Full Name" type="text">
+                                            <input class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Full Name" type="text">
+                                            @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="contact-form-style mb-20">
-                                            <input name="email" placeholder="Email Address" type="email">
+                                            <input class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Email Address" type="email">
+                                            @error('email')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                             @enderror
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="contact-form-style mb-20">
-                                            <input name="subject" placeholder="Subject" type="text">
+                                            <input class="form-control @error('subject') is-invalid @enderror" name="subject" placeholder="Subject" type="text">
+                                            @error('subject')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                             @enderror
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="contact-form-style">
-                                            <textarea name="message" placeholder="Message"></textarea>
-                                            <button class="submit" type="submit">SEND MESSAGE</button>
-                                        </div>
+                                            <textarea class="form-control @error('message') is-invalid @enderror"name="message" placeholder="Message"></textarea>
+                                            @error('message')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                         @enderror
+                                            <button class="submit" type="submit">SEND MESSAGE</button>                                        </div>
                                     </div>
                                 </div>
                             </form>
-                            <p class="form-messege"></p>
                         </div>
                         <!-- Contact Form Area End -->
                         <!-- Contact Address Strat -->

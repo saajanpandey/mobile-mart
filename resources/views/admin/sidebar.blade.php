@@ -55,6 +55,11 @@
                     <i class="fab fa-bandcamp"></i>
                     <span>Brands</span></a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('contact.index')}}">
+                    <i class="fa fa-question"></i>
+                    <span>Customer Queries</span></a>
+            </li>
 
         </ul>
         <!-- End of Sidebar -->
@@ -166,6 +171,9 @@
                 </div>
 
                 @include('scripts')
-
+                <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('my-editor');
+    </script>
                 </body>
 @endsection

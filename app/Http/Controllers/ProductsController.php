@@ -63,9 +63,10 @@ class ProductsController extends Controller
      * @param  \App\Models\Products  $Product
      * @return \Illuminate\Http\Response
      */
-    public function show(Products $product)
+    public function show($id)
     {
-        //
+        $product = Products::find($id);
+        return view('frontend.single-product', compact('product'));
     }
 
     /**
@@ -134,5 +135,11 @@ class ProductsController extends Controller
         }
         $product->delete();
         return redirect()->route('products.index')->with('success', 'The data was deleted successfully');;
+    }
+
+    public function getProducts()
+    {
+        $products = Products::with('brand')->where('status', '1')->get();
+        return $products;
     }
 }

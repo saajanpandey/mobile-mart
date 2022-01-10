@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CommentRequest;
-use App\Models\Comment;
-use App\Models\User;
+use App\Http\Requests\ContactRequest;
+use App\Models\Contact;
 use Illuminate\Http\Request;
 
-class CommentController extends Controller
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +15,8 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+        $contacts = Contact::paginate(8);
+        return view('admin.queries', compact('contacts'));
     }
 
     /**
@@ -35,26 +35,25 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CommentRequest $request)
+    public function store(ContactRequest $request)
     {
-        $productId = $request->postId;
-        $userId = User::where('email', $request->email)->pluck('id');
-        $comment = new Comment();
-        $comment->title = $request->title;
-        $comment->user_id = $userId[0];
-        $comment->post_id = $productId;
-        $comment->save();
+        $contact = new Contact();
+        $contact->name = $request->name;
+        $contact->email = $request->email;
+        $contact->subject = $request->subject;
+        $contact->message = $request->message;
+        $contact->save();
 
-        return redirect()->back();
+        return redirect()->route('frontend.contact-us');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Comment  $comment
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Comment $comment)
+    public function show($id)
     {
         //
     }
@@ -62,10 +61,10 @@ class CommentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Comment  $comment
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Comment $comment)
+    public function edit($id)
     {
         //
     }
@@ -74,10 +73,10 @@ class CommentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Comment  $comment
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comment $comment)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -85,17 +84,11 @@ class CommentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Comment  $comment
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comment $comment)
+    public function destroy($id)
     {
         //
-    }
-
-    public function getCommentByPost($id)
-    {
-        $comments = Comment::where('post_id', $id)->with('user')->get();
-        return $comments;
     }
 }

@@ -13,11 +13,11 @@ class Comment extends Model
 
     public function post()
     {
-        $this->belongsTo(Products::class, 'post_id', 'id');
+        return  $this->belongsTo(Products::class, 'post_id', 'id');
     }
 
     public function user()
     {
-        $this->belongsTo(User::class, 'user_id', 'id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 }
