@@ -1,4 +1,4 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -69,6 +69,56 @@
                             </div>
                         </div>
                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection --}}
+
+@extends('frontend.layout')
+@section('content')
+<div class="breadcrumb-area bg-image-3 ptb-150">
+    <div class="container">
+        <div class="breadcrumb-content text-center">
+            <h3>Register</h3>
+            <ul>
+                <li><a href="{{route('first.page')}}">Home</a></li>
+                <li class="active">Register</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb Area End -->
+<div class="login-register-area ptb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 col-md-12 ml-auto mr-auto">
+                <div class="login-register-wrapper">
+                    <div class="login-register-tab-list nav">
+                        <a class="" data-toggle="tab" href="#lg1">
+                            <h4> register </h4>
+                        </a>
+                    </div>
+                    <div class="tab-content">
+                        <div id="lg1" class="tab-pane active">
+                            <div class="login-form-container">
+                                <div class="login-register-form">
+                                    <form action="{{ route('register') }}" method="POST">
+                                        @csrf
+                                        <input type="text" name="name" placeholder="Username">
+                                        <input name="email" placeholder="Email" type="email">
+                                        <input type="password" name="password" placeholder="Password">
+                                        <input type="password" name="password_confirmation" placeholder="Confim Password">
+
+                                         <div class="button-box">
+                                              <button type="submit"><span>Register</span></button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

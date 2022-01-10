@@ -15,13 +15,23 @@
                  <div class="form-group row">
                     <label  class="col-sm-2 col-form-label">Product Name</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="name" >
+                      <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" >
+                      @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                     @enderror
                     </div>
                   </div>
                   <div class="form-group row">
                     <label  class="col-sm-2 col-form-label">Product Price</label>
                     <div class="col-sm-10">
-                      <input type="text" class="form-control" name="price">
+                      <input type="text" class="form-control @error('price') is-invalid @enderror" name="price">
+                      @error('price')
+                      <span class="invalid-feedback" role="alert">
+                          <strong>{{ $message }}</strong>
+                      </span>
+                    @enderror
                     </div>
                   </div>
                   <div class="form-group row">
@@ -36,9 +46,14 @@
                   </div>
 
                   <div class="form-group row">
-                    <label  class="col-sm-2 col-form-label">Product Description</label>
+                    <label  class="col-sm-2 col-form-label ">Product Description</label>
                     <div class="col-sm-10">
-                      <textarea name="description" id="" cols="30" rows="10" ></textarea>
+                      <textarea name="description" id="" cols="30" rows="10" class="@error('description') is-invalid @enderror"></textarea>
+                      @error('description')
+                      <span class="invalid-feedback" role="alert">
+                          <strong>{{ $message }}</strong>
+                      </span>
+                    @enderror
                     </div>
                   </div>
 
@@ -55,7 +70,12 @@
                   <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Product Image</label>
                     <div class="col-sm-10">
-                        <input type="file" class="form-control" name="image"/>
+                        <input type="file" class="form-control @error('image') is-invalid @enderror" name="image"/>
+                        @error('image')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                      @enderror
                     </div>
                   </div>
                   <button type="submit" class="btn btn-primary">Submit</button>

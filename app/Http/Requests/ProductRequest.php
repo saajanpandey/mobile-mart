@@ -27,7 +27,20 @@ class ProductRequest extends FormRequest
             'name' => 'required|max:255',
             'price' => 'required|integer',
             'description' => 'nullable|max:500|',
-            'images' => 'nullable|mimes:png,jpg',
+            'image' => 'required|mimes:png,jpg',
+            'status' => 'required',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'The product name is required field',
+            'price.required' => 'The product price is required field',
+            'description.required' => 'The description field is required',
+            'image:mimes' => 'The product image should be in correct format',
+            'image.required' => 'The product image is required field',
+            'status.required' => 'The status is required field',
         ];
     }
 }

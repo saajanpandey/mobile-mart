@@ -128,7 +128,7 @@
                 <footer class="sticky-footer bg-white mt-auto">
                     <div class="container my-auto">
                         <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; Mobile Pasal 2021</span>
+                            <span>Copyright &copy; Mobile Mart 2021</span>
                         </div>
                     </div>
                 </footer>

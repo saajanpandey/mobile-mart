@@ -7,7 +7,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header d-flex">
-            <h6 class="m-0 font-weight-bold text-primary mr-auto">Mobile Phones</h6>
+            <h4 class="m-0 font-weight-bold text-primary mr-auto">Mobile Phones</h4>
             <a href="{{route('products.create')}}" class="btn btn-primary btn-circle .btn-sm float-right">
                 <i class="fas fa-plus"></i>                </a>
         </div>
@@ -40,7 +40,9 @@
                             <td>{{$product->name}}</td>
                             <td>{{$product->price}}</td>
                             <td>{{$product->brand->name??'-'}}</td>
-                            <td>{{$product->image}}</td>
+                            <td>
+                                <img src="{{asset('/uploads/productImages'.'/'.$product->image)}}" alt="" style="width:100px;heigth:100pxs">
+                            </td>
                             <td>
                                 @if($product->status==0)
                                 <span class="badge bg-danger">Disable</span>

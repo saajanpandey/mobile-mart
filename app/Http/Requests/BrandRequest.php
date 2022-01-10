@@ -27,4 +27,11 @@ class BrandRequest extends FormRequest
             'name' => 'required|max:255',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'The brand name is required field',
+        ];
+    }
 }
