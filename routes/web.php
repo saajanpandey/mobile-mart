@@ -74,11 +74,9 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::put('/products/{id}', [ProductsController::class, 'update'])->name('products.update');
 
     Route::get('/contacts', [ContactController::class, 'index'])->name('contact.index');
-    // Route::get('/messages/create', [ContactController::class, 'create'])->name('contact.create');
-    // Route::post('/messages', [ContactController::class, 'store'])->name('contact.store');
-    // Route::get('/messages/{id}', [ContactController::class, 'destroy'])->name('contact.destroy');
-    // Route::get('/messages/{id}/edit', [ContactController::class, 'edit'])->name('contact.edit');
-    // Route::put('/messages/{id}', [ContactController::class, 'update'])->name('contact.update');
+    Route::get('/contacts/{id}', [ContactController::class, 'destroy'])->name('contact.destroy');
+    // Route::get('/contacts/{id}/edit', [ContactController::class, 'edit'])->name('contact.edit');
+    // Route::put('/contacts/{id}', [ContactController::class, 'update'])->name('contact.update');
 });
 
 Route::group(['middleware' => 'auth:web'], function () {

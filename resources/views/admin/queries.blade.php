@@ -38,10 +38,7 @@
                             <td>{{$contact->subject??'-'}}</td>
                             <td>{{$contact->message??'-'}}</td>
                             <td>
-                                <a href="{{route('products.edit',$contact->id)}}" class="btn btn-primary btn-circle">
-                                    <i class="fas fa-pen"></i>
-                                </a>
-                                <a href="{{route('products.destroy',$contact->id)}}" class="btn btn-danger btn-circle">
+                                <a href="{{route('contact.destroy',$contact->id)}}" class="btn btn-danger btn-circle">
                                     <i class="fas fa-trash"></i>
                                 </a>
                             </td>
