@@ -1,3 +1,4 @@
+@inject('carts','App\Http\Controllers\CartController')
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -55,8 +56,8 @@
                                                 @auth
                                                   <li class="top-hover"><a href="">{{Auth::user()->name}}</a>
                                                   <ul class="submenu">
-                                                    <li><a href="{{url('logout')}}">logout</a></li>
                                                     <li><a href="{{ url('/home') }}">Edit Profile</a></li>
+                                                    <li><a href="{{url('logout')}}">logout</a></li>
                                                 </ul>
                                             </li>
                                                 @else
@@ -83,36 +84,34 @@
             </a>
             <div class="shopping-cart-content">
                 <ul>
+                    @foreach ($carts->getCartByUser(Auth::user()->id) as $cart)
                     <li class="single-shopping-cart">
                         <div class="shopping-cart-img">
-                            <a href="#"><img alt="" src="assets/img/cart/cart-1.jpg"></a>
+                            <a href="#"><img alt="" style="width:70px;height:70px" src="{{asset('/uploads/productImages/'.$cart->product->image)}}"></a>
                         </div>
                         <div class="shopping-cart-title">
-                            <h4><a href="#">Phantom Remote </a></h4>
-                            <h6>Qty: 02</h6>
-                            <span>$260.00</span>
+                            <h4><a href="#">{{$cart->product->name}}</a></h4>
+                            <h6>Qty: {{$cart->quantity}}</h6>
+                            @php $sum = ($cart->product->price)*$cart->quantity @endphp
+                            <span>{{$sum}}</span>
                         </div>
                         <div class="shopping-cart-delete">
-                            <a href="#"><i class="ion ion-close"></i></a>
+                            <a href="{{route('cart.destroy',$cart->id)}}"><i class="ion ion-close"></i></a>
                         </div>
                     </li>
-                    <li class="single-shopping-cart">
-                        <div class="shopping-cart-img">
-                            <a href="#"><img alt="" src="assets/img/cart/cart-2.jpg"></a>
-                        </div>
-                        <div class="shopping-cart-title">
-                            <h4><a href="#">Phantom Remote</a></h4>
-                            <h6>Qty: 02</h6>
-                            <span>$260.00</span>
-                        </div>
-                        <div class="shopping-cart-delete">
-                            <a href="#"><i class="ion ion-close"></i></a>
-                        </div>
-                    </li>
+                    @endforeach
+
                 </ul>
                 <div class="shopping-cart-total">
-                    <h4>Shipping : <span>$20.00</span></h4>
-                    <h4>Total : <span class="shop-total">$260.00</span></h4>
+                    <h4>Shipping : <span>NPR 20</span></h4>
+                    @php
+                    $sum=0;
+                    foreach ($carts->getCartByUser(Auth::user()->id) as $cart) {
+                        $sum += ($cart->product->price) * $cart->quantity;
+                    }
+                    $finalSum = $sum+20;
+                    @endphp
+                    <h4>Total : <span class="shop-total">{{$finalSum}}</span></h4>
                 </div>
                 <div class="shopping-cart-btn">
                     <a href="cart-page.html">view cart</a>

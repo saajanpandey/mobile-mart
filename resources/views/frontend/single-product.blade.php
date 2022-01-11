@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-lg-6 col-md-12">
                 <div class="product-details-img">
-                    <img class="zoompro" src="{{asset('/uploads/productImages/'.$product->image)}}" data-zoom-image="" alt="product image not available"/>
+                    <img class="zoompro" src="{{asset('/uploads/productImages/'.$product->image)}}" data-zoom-image="{{asset('/uploads/productImages/'.$product->image)}}" alt="product image not available"/>
                 </div>
             </div>
             <div class="col-lg-6 col-md-12">
@@ -30,17 +30,37 @@
                     <div class="in-stock">
 
                     </div>
+                    @auth
+                    <form action="{{route('cart.store')}}" method="POST" >
+                        @csrf
+                        <input type="hidden" name="productId" id="" value="{{$product->id}}">
+                        <input type="hidden" name="email" id="" value="{{Auth::user()->email}}">
+                    <div class="quality-add-to-cart">
+                        <div class="quality">
+                            <label>Qty:</label>
+                            <input class="cart-plus-minus-box" type="text" name="quantity">
+                        </div>
+
+                        <div class="shop-list-cart-wishlist">
+                            <button class="btn  btn-outline-success" style="height:39px" type="Submit">Add To Cart <i class="fa fa-shopping-cart"></i></button>
+                        </div>
+                        {!! $errors->first('quantity', '<div class="error-block" style="color:red">:message</div>') !!}
+                    </div>
+                    </form>
+                    @else
+                    <form action="{{route('cart.store')}}" method="POST" >
+                        @csrf
                     <div class="quality-add-to-cart">
                         <div class="quality">
                             <label>Qty:</label>
                             <input class="cart-plus-minus-box" type="text" name="quantity">
                         </div>
                         <div class="shop-list-cart-wishlist">
-                            <a title="Add To Cart" href="#">
-                                <i class="fa fa-shopping-cart"></i>
-                             </a>
+                            <button class="btn  btn-outline-success" style="height:39px" type="Submit">Add To Cart <i class="fa fa-shopping-cart"></i></button>
                         </div>
                     </div>
+                    </form>
+                    @endauth
                     <div class="pro-dec-categories">
                         <ul>
                             <li class="categories-title">Brand:</li>

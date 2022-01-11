@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CartRequest;
+use App\Models\Cart;
+use App\Models\CartModel;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -32,9 +36,15 @@ class CartController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CartRequest $request)
     {
-        //
+        $userId = User::where('email', $request->email)->pluck('id');
+        $cart = new Cart();
+        $cart->user_id = $userId[0];
+        $cart->product_id = $request->productId;
+        $cart->quantity = $request->quantity;
+        $cart->save();
+        return redirect()->route('first.page');
     }
 
     /**
@@ -79,6 +89,14 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cart = Cart::find($id);
+        $cart->delete();
+        return redirect()->route('first.page');
+    }
+
+    public function getCartByUser($id)
+    {
+        $carts = Cart::where('user_id', $id)->with('product')->get();
+        return $carts;
     }
 }
