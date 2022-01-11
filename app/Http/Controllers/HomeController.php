@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Rules\MatchOldPassword;
 use Illuminate\Http\Request;
+
 
 class HomeController extends Controller
 {
@@ -23,6 +26,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('frontend.my-account');
+    }
+
+    public function update(Request $request, $id)
+    {
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->update();
+        return redirect()->route('first.page')->with('message', 'User Profile Updated!');
     }
 }

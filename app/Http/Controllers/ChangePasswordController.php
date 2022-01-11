@@ -2,14 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CartRequest;
-use App\Models\Cart;
-use App\Models\CartModel;
 use App\Models\User;
+use App\Rules\MatchOldPassword;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
+use Auth;
 
-class CartController extends Controller
+class ChangePasswordController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -36,15 +41,25 @@ class CartController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CartRequest $request)
+    public function store(Request $request)
     {
-        $userId = User::where('email', $request->email)->pluck('id');
-        $cart = new Cart();
-        $cart->user_id = $userId[0];
-        $cart->product_id = $request->productId;
-        $cart->quantity = $request->quantity;
-        $cart->save();
-        return redirect()->route('first.page');
+        $request->validate([
+
+            'current_password' => ['required', new MatchOldPassword],
+
+            'new_password' => [
+                'required', Password::min(8)
+                    ->letters()
+                    ->mixedCase()
+                    ->numbers()
+                    ->symbols()
+            ],
+
+            'new_confirm_password' => ['same:new_password'],
+
+        ]);
+        User::find(Auth::user()->id)->update(['password' => Hash::make($request->new_password)]);
+        return redirect()->route('first.page')->with('message', 'Password Changed Successfully');
     }
 
     /**
@@ -89,20 +104,6 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        $cart = Cart::find($id);
-        $cart->delete();
-        return redirect()->route('first.page');
-    }
-
-    public function getCartByUser($id)
-    {
-        $carts = Cart::where('user_id', $id)->with('product')->get();
-        return $carts;
-    }
-
-    public function clearCart($id)
-    {
-        Cart::where('user_id', $id)->delete();
-        return redirect()->route('frontend.cart');
+        //
     }
 }

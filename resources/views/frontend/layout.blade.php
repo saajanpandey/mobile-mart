@@ -26,6 +26,7 @@
         <link rel="stylesheet" href="{{asset('/frontend/css/style.css')}}">
         <link rel="stylesheet" href="{{asset('/frontend/assets/css/responsive.css')}}">
         <script src="{{asset('/frontend/js/vendor/modernizr-2.8.3.min.js')}}"></script>
+        <link href=" 	https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.css" rel="stylesheet" />
     </head>
     <body>
         <!-- header start -->
@@ -54,7 +55,7 @@
                                             @if (Route::has('login'))
 
                                                 @auth
-                                                  <li class="top-hover"><a href="">{{Auth::user()->name}}</a>
+                                                  <li class="top-hover"><a href="{{route('home')}}">{{Auth::user()->name}}</a>
                                                   <ul class="submenu">
                                                     <li><a href="{{ url('/home') }}">Edit Profile</a></li>
                                                     <li><a href="{{url('logout')}}">logout</a></li>
@@ -90,7 +91,7 @@
                             <a href="#"><img alt="" style="width:70px;height:70px" src="{{asset('/uploads/productImages/'.$cart->product->image)}}"></a>
                         </div>
                         <div class="shopping-cart-title">
-                            <h4><a href="#">{{$cart->product->name}}</a></h4>
+                            <h4><a href="{{route('products.details',$cart->product->id)}}">{{$cart->product->name}}</a></h4>
                             <h6>Qty: {{$cart->quantity}}</h6>
                             @php $sum = ($cart->product->price)*$cart->quantity @endphp
                             <span>{{$sum}}</span>
@@ -114,7 +115,7 @@
                     <h4>Total : <span class="shop-total">{{$finalSum}}</span></h4>
                 </div>
                 <div class="shopping-cart-btn">
-                    <a href="cart-page.html">view cart</a>
+                    <a href="{{route('frontend.cart')}}">view cart</a>
                     <a href="checkout.html">checkout</a>
                 </div>
             </div>
@@ -252,9 +253,49 @@
                 <script src="{{asset('/frontend/js/owl.carousel.min.js')}}"></script>
                 <script src="{{asset('/frontend/js/plugins.js')}}"></script>
                 <script src="{{asset('/frontend/js/main.js')}}"></script>
-                <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+                {{-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> --}}
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-            </body>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"></script>
 
-        </html>
+            <script>
+                                @if(Session::has('message'))
+                                toastr.options =
+                                        {
+                                "closeButton" : true,
+                                "progressBar" : true
+                            }
+                                    toastr.success("{{ session('message') }}");
+                            @endif
+
+                            @if(Session::has('error'))
+                            toastr.options =
+                            {
+                                "closeButton" : true,
+                                "progressBar" : true
+                            }
+                                    toastr.error("{{ session('error') }}");
+                            @endif
+
+                            @if(Session::has('info'))
+                            toastr.options =
+                            {
+                                "closeButton" : true,
+                                "progressBar" : true
+                            }
+                                    toastr.info("{{ session('info') }}");
+                            @endif
+
+                            @if(Session::has('warning'))
+                            toastr.options =
+                            {
+                                "closeButton" : true,
+                                "progressBar" : true
+                            }
+                                    toastr.warning("{{ session('warning') }}");
+                            @endif
+                        </script>
+
+                        </body>
+
+                    </html>

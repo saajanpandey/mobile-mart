@@ -5,8 +5,10 @@ use App\Http\Controllers\Admin\LoginController as AdminLoginController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
 
@@ -81,12 +83,18 @@ Route::group(['middleware' => 'auth:admin'], function () {
 
 Route::group(['middleware' => 'auth:web'], function () {
 
-    Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+    // Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
     Route::get('/cart/{id}/edit', [BrandController::class, 'edit'])->name('cart.edit');
     Route::get('/cart/create', [BrandController::class, 'create'])->name('cart.create');
     Route::post('/cart', [CartController::class, 'store'])->name('cart.store');
     Route::get('/cart/{id}', [CartController::class, 'destroy'])->name('cart.destroy');
     Route::put('/cart/{id}', [CartController::class, 'update'])->name('cart.update');
+
+    Route::view('/view-cart', 'frontend.cart')->name('frontend.cart');
+    Route::get('/clear-cart/{id}', [CartController::class, 'clearCart'])->name('cart.clear');
+
+    Route::put('/update/{id}', [HomeController::class, 'update'])->name('user.update');
+    Route::post('/change-password', [ChangePasswordController::class, 'store'])->name('user.password');
 
 
     Route::get('/comments', [CommentController::class, 'index'])->name('comments.index');
