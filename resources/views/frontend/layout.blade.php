@@ -28,6 +28,12 @@
         <link rel="stylesheet" href="{{asset('/frontend/assets/css/responsive.css')}}">
         <script src="{{asset('/frontend/js/vendor/modernizr-2.8.3.min.js')}}"></script>
         <link href=" 	https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.css" rel="stylesheet" />
+        <style>
+            .pagination{
+                float: right;
+                margin-top: 10px;
+            }
+        </style>
     </head>
     <body>
         <!-- header start -->
@@ -51,6 +57,7 @@
                                             </li>
                                             <li><a href="{{route('frontend.about-us')}}">about</a></li>
 
+                                            <li><a href="{{route('frontend.shop')}}">Shop</a></li>
 
                                             <li><a href="{{route('frontend.contact-us')}}">contact</a></li>
                                             @if (Route::has('login'))

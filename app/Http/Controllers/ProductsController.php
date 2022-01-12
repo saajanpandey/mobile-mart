@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ProductRequest;
 use App\Models\Brand;
 use App\Models\Products;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use File;
 
@@ -139,7 +140,14 @@ class ProductsController extends Controller
 
     public function getProducts()
     {
-        $products = Products::with('brand')->where('status', '1')->get();
+        $date = Carbon::now()->subDays(2);
+        $products = Products::with('brand')->where('status', '1')->where('created_at', '>=', $date)->get();
+        return $products;
+    }
+
+    public function getProductPagination()
+    {
+        $products = Products::with('brand')->where('status', '1')->paginate(8);
         return $products;
     }
 }

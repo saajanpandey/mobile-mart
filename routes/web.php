@@ -32,6 +32,7 @@ Route::get('/', function () {
 
 Route::view('/about-us', 'frontend.about-us')->name('frontend.about-us');
 Route::view('/contact-us', 'frontend.contact-us')->name('frontend.contact-us');
+Route::view('/shop', 'frontend.shop')->name('frontend.shop');
 Route::post('/contacts', [ContactController::class, 'store'])->name('contact.store');
 
 
