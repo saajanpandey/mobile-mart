@@ -11,6 +11,8 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\SearchController;
+use App\Models\Products;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,6 +36,9 @@ Route::view('/about-us', 'frontend.about-us')->name('frontend.about-us');
 Route::view('/contact-us', 'frontend.contact-us')->name('frontend.contact-us');
 Route::view('/shop', 'frontend.shop')->name('frontend.shop');
 Route::post('/contacts', [ContactController::class, 'store'])->name('contact.store');
+Route::get('/search', [SearchController::class, 'index'])->name('search.product');
+
+
 
 
 
@@ -43,6 +48,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('logout', [LoginController::class, 'logout']);
 
 Route::get('/product/detail/{id}', [ProductsController::class, 'show'])->name('products.details');
+
 
 
 

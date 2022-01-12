@@ -1,13 +1,13 @@
-@inject('products','App\Http\Controllers\ProductsController')
+
 @extends('frontend.layout')
 @section('content')
 <div class="breadcrumb-area bg-image-3 ptb-150">
     <div class="container">
         <div class="breadcrumb-content text-center">
-            <h3>OUR Products</h3>
+            <h3>Search</h3>
             <ul>
                 <li><a href="{{route('first.page')}}">Home</a></li>
-                <li class="active">Our Products</li>
+                <li class="active">Search</li>
             </ul>
         </div>
     </div>
@@ -26,7 +26,7 @@
                     </div>
                     <div class="product-sorting-wrapper">
                         <form action="{{route('search.product')}}" method="GET">
-                            @csrf
+
                             <div class="form-row">
                               <div class="col-7">
                                 <input type="text" class="form-control" placeholder="Search" name="keyword">
@@ -41,7 +41,7 @@
                 <div class="grid-list-product-wrapper">
                     <div class="product-grid product-view pb-20">
                         <div class="row">
-                            @foreach ($products->getProductPagination() as $product)
+                            @foreach ($searches as $product)
                             <div class="product-width col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 mb-30">
                                 <div class="product-wrapper">
                                     <div class="product-img">
@@ -82,7 +82,7 @@
 
                         </div>
                     </div>
-                        {!!$products->getProductPagination()->links()!!}
+                        {!!$searches->links()!!}
                 </div>
             </div>
         </div>
