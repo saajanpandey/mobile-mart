@@ -1,4 +1,6 @@
 @inject('carts','App\Http\Controllers\CartController')
+@inject('shipping','App\Http\Controllers\Admin\ShippingController')
+
 @extends('frontend.layout')
 @section('content')
 <div class="breadcrumb-area bg-image-3 ptb-150">
@@ -137,10 +139,11 @@
                     foreach ($carts->getCartByUser(Auth::user()->id) as $cart) {
                         $sum += ($cart->product->price) * $cart->quantity;
                     }
-                    $finalSum = $sum+20;
+                    $charge = $shipping->getShipping()->price;
+                    $finalSum = $sum+$charge;
                     @endphp
                             <h5>Total products <span>NPR {{$sum}}</span></h5>
-                            <h5>Shipping Charge<span>NRP 20</span></h5>
+                            <h5>Shipping Charge<span>NRP {{$shipping->getShipping()->price}}</span></h5>
                             <div class="total-shipping">
                             </div>
                             <h4 class="grand-totall-title">Grand Total  <span>NPR {{$finalSum}}</span></h4>

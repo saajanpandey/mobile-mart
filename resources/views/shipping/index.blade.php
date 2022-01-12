@@ -9,9 +9,10 @@
     <div class="card shadow mb-4">
         <div class="card-header d-flex">
             <h4 class="m-0 font-weight-bold text-primary mr-auto">Shipping Charges</h4>
-            
+            @if(($shipping->count())<1)
             <a href="{{route('shipping.create')}}" class="btn btn-primary btn-circle .btn-sm float-right">
                 <i class="fas fa-plus"></i>                </a>
+                @endif
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -35,9 +36,9 @@
                     <tbody>
                         @foreach ($shippings as $shipping)
                         <tr>
-                            <td>{{$shipping->name}}</td>
-                            <td>{{$shipping->price}}</td>
-                            <td>{{$shipping->remarks}}</td>
+                            <td>{{$shipping->name??'-'}}</td>
+                            <td>{{$shipping->price??'-'}}</td>
+                            <td>{{$shipping->remarks??'-'}}</td>
                             <td>
                                 <a href="{{route('shipping.edit',$shipping->id)}}" class="btn btn-primary btn-circle">
                                     <i class="fas fa-pen"></i>

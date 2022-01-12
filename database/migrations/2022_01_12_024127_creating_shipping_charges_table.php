@@ -17,7 +17,7 @@ class CreatingShippingChargesTable extends Migration
             $table->id();
             $table->string('name');
             $table->integer('price');
-            $table->longText('remarks');
+            $table->longText('remarks')->nullable();
             $table->timestamps();
         });
     }

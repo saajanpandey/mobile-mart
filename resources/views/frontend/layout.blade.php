@@ -1,4 +1,5 @@
 @inject('carts','App\Http\Controllers\CartController')
+@inject('shipping','App\Http\Controllers\Admin\ShippingController')
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -105,13 +106,14 @@
 
                 </ul>
                 <div class="shopping-cart-total">
-                    <h4>Shipping : <span>NPR 20</span></h4>
+                    <h4>Shipping : <span>{{$shipping->getShipping()->price}}</span></h4>
                     @php
                     $sum=0;
                     foreach ($carts->getCartByUser(Auth::user()->id) as $cart) {
                         $sum += ($cart->product->price) * $cart->quantity;
                     }
-                    $finalSum = $sum+20;
+                    $charge =$shipping->getShipping()->price;
+                    $finalSum = $sum+ $charge;
                     @endphp
                     <h4>Total : <span class="shop-total">{{$finalSum}}</span></h4>
                 </div>

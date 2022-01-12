@@ -65,7 +65,8 @@ class ShippingController extends Controller
      */
     public function edit($id)
     {
-        //
+        $shipping = Shipping::find($id);
+        return view('shipping.edit', compact('shipping'));
     }
 
     /**
@@ -77,7 +78,12 @@ class ShippingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $shipping = Shipping::find($id);
+        $shipping->name = $request->name;
+        $shipping->price = $request->price;
+        $shipping->remarks = $request->remarks;
+        $shipping->save();
+        return redirect()->route('shipping.index')->with('success', 'The data was updated successfully');;
     }
 
     /**
@@ -88,6 +94,14 @@ class ShippingController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $shipping = Shipping::find($id);
+        $shipping->delete();
+        return redirect()->route('shipping.index')->with('success', 'The data was deleted successfully');;
+    }
+
+    public function getShipping()
+    {
+        $shipping = Shipping::where('id', 1)->first();
+        return $shipping;
     }
 }
