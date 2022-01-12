@@ -44,7 +44,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{route('products.index')}}">
                     <i class="fas fa-mobile"></i>
-                    <span>Sell Phones</span></a>
+                    <span>Products</span></a>
             </li>
 
             <li class="nav-item">

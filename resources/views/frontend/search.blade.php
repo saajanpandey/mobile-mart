@@ -1,4 +1,3 @@
-
 @extends('frontend.layout')
 @section('content')
 <div class="breadcrumb-area bg-image-3 ptb-150">
@@ -6,7 +5,7 @@
         <div class="breadcrumb-content text-center">
             <h3>Search</h3>
             <ul>
-                <li><a href="{{route('first.page')}}">Home</a></li>
+                <li><a href="{{route('frontend.shop')}}">Shop</a></li>
                 <li class="active">Search</li>
             </ul>
         </div>
@@ -25,7 +24,7 @@
                         </ul>
                     </div>
                     <div class="product-sorting-wrapper">
-                        <form action="{{route('search.product')}}" method="GET">
+                        <form  autocomplete="off" action="{{route('search.product')}}" method="GET">
 
                             <div class="form-row">
                               <div class="col-7">
@@ -38,6 +37,7 @@
                           </form>
                     </div>
                 </div>
+                @if($searches->count()>1)
                 <div class="grid-list-product-wrapper">
                     <div class="product-grid product-view pb-20">
                         <div class="row">
@@ -84,6 +84,9 @@
                     </div>
                         {!!$searches->links()!!}
                 </div>
+                @else
+                <h4 style="margin-left: 10px;">No Products Found!!!</h4>
+                @endif
             </div>
         </div>
     </div>

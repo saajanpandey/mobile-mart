@@ -12,11 +12,12 @@ class SearchController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        if (request('keyword')) {
-            $searches = Products::where('name', 'Like', '%' . request('keyword') . '%')->paginate(8);
-        }
+        $this->validate($request, [
+            'keyword' => 'required|string',
+        ]);
+        $searches = Products::where('name', 'Like', '%' . request('keyword') . '%')->paginate(8);
         return view('frontend.search', compact('searches'));
     }
 

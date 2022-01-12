@@ -33,7 +33,7 @@
     <div class="container">
         <div class="product-top-bar section-border mb-55">
             <div class="section-title-wrap text-center">
-                <h3 class="section-title">Available Phones</h3>
+                <h3 class="section-title">Available Products</h3>
             </div>
         </div>
         <div class="featured-product-active hot-flower owl-carousel product-nav">

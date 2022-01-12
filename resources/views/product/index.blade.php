@@ -7,7 +7,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header d-flex">
-            <h4 class="m-0 font-weight-bold text-primary mr-auto">Mobile Phones</h4>
+            <h4 class="m-0 font-weight-bold text-primary mr-auto">Products</h4>
             <a href="{{route('products.create')}}" class="btn btn-primary btn-circle .btn-sm float-right">
                 <i class="fas fa-plus"></i>                </a>
         </div>

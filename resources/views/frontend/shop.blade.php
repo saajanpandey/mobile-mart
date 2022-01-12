@@ -25,11 +25,12 @@
                         </ul>
                     </div>
                     <div class="product-sorting-wrapper">
-                        <form action="{{route('search.product')}}" method="GET">
+                        <form  autocomplete="off" action="{{route('search.product')}}" method="GET">
                             @csrf
                             <div class="form-row">
                               <div class="col-7">
                                 <input type="text" class="form-control" placeholder="Search" name="keyword">
+                                {!! $errors->first('keyword', '<div class="error-block" style="color:red">:message</div>') !!}
                               </div>
                               <div class="col">
                                 <button type="submit" style="margin: -10px;height: 35px;margin-top: 1px;" class="btn btn-success">Search</button>

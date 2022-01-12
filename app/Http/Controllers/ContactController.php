@@ -44,7 +44,7 @@ class ContactController extends Controller
         $contact->message = $request->message;
         $contact->save();
 
-        return redirect()->route('frontend.contact-us');
+        return redirect()->route('frontend.contact-us')->with('message', 'Message Sent Successfully');
     }
 
     /**

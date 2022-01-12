@@ -140,8 +140,7 @@ class ProductsController extends Controller
 
     public function getProducts()
     {
-        $date = Carbon::now()->subDays(2);
-        $products = Products::with('brand')->where('status', '1')->where('created_at', '>=', $date)->get();
+        $products = Products::with('brand')->where('status', '1')->get();
         return $products;
     }
 
