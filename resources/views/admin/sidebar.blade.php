@@ -41,9 +41,6 @@
                     <span>Dashboard</span></a>
             </li>
 
-
-
-
             <li class="nav-item">
                 <a class="nav-link" href="{{route('products.index')}}">
                     <i class="fas fa-mobile"></i>
@@ -55,12 +52,17 @@
                     <i class="fab fa-bandcamp"></i>
                     <span>Brands</span></a>
             </li>
+
             <li class="nav-item">
                 <a class="nav-link" href="{{route('contact.index')}}">
                     <i class="fa fa-question"></i>
                     <span>Customer Queries</span></a>
             </li>
-
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('shipping.index')}}">
+                    <i class="fa fa-truck"></i>
+                    <span>Shipping Charges</span></a>
+            </li>
         </ul>
         <!-- End of Sidebar -->
 

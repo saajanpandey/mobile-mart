@@ -54,7 +54,7 @@ class ProductsController extends Controller
         $data['image'] = $name;
         $data['description'] = $request->description;
         Products::create($data);
-        return redirect()->route('products.index')->with('success', 'The data was saved successfully');;
+        return redirect()->route('products.index')->with('success', 'The data was saved successfully');
     }
 
     /**

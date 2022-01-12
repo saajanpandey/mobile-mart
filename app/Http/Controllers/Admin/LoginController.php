@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Auth;
 use Illuminate\Support\Facades\Auth as FacadesAuth;
+use Illuminate\Validation\Rules\Password;
 
 class LoginController extends Controller
 {
@@ -26,7 +27,11 @@ class LoginController extends Controller
     {
         $this->validate($request, [
             'email'   => 'required|email',
-            // 'password' => 'required|min:6'
+            'password' => 'required', Password::min(6)
+                ->letters()
+                ->mixedCase()
+                ->numbers()
+                ->symbols()
         ]);
 
         if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {

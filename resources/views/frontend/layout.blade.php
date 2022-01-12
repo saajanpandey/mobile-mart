@@ -58,6 +58,7 @@
                                                   <li class="top-hover"><a href="{{route('home')}}">{{Auth::user()->name}}</a>
                                                   <ul class="submenu">
                                                     <li><a href="{{ url('/home') }}">Edit Profile</a></li>
+                                                    <li><a href="{{route('change-password.view')}}">change Password</a></li>
                                                     <li><a href="{{url('logout')}}">logout</a></li>
                                                 </ul>
                                             </li>
@@ -116,7 +117,7 @@
                 </div>
                 <div class="shopping-cart-btn">
                     <a href="{{route('frontend.cart')}}">view cart</a>
-                    <a href="checkout.html">checkout</a>
+                    <a href="{{route('user.checkout')}}">checkout</a>
                 </div>
             </div>
         </div>

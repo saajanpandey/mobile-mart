@@ -107,10 +107,18 @@
                                     <form action="{{ route('register') }}" method="POST">
                                         @csrf
                                         <input type="text" name="name" placeholder="Username">
+                                        @if ($errors->has('name'))
+                                            <div class="alert alert-danger">{{$errors->first('name') }}</div>
+                                             @endif
                                         <input name="email" placeholder="Email" type="email">
+                                        @if ($errors->has('email'))
+                                        <div class="alert alert-danger">{{$errors->first('email') }}</div>
+                                        @endif
                                         <input type="password" name="password" placeholder="Password">
+                                        @if ($errors->has('password'))
+                                            <div class="alert alert-danger">{{$errors->first('password') }}</div>
+                                         @endif
                                         <input type="password" name="password_confirmation" placeholder="Confim Password">
-
                                          <div class="button-box">
                                               <button type="submit"><span>Register</span></button>
                                         </div>

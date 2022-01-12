@@ -104,7 +104,13 @@
                                         <form action="{{ route('login') }}" method="POST">
                                             @csrf
                                             <input type="email" name="email" placeholder="Email">
+                                            @if ($errors->has('email'))
+                                            <div class="alert alert-danger">{{$errors->first('email') }}</div>
+                                            @endif
                                             <input type="password" name="password" placeholder="Password">
+                                            @if ($errors->has('password'))
+                                            <div class="alert alert-danger">{{$errors->first('password') }}</div>
+                                             @endif
                                             <div class="button-box">
                                                 <div class="login-toggle-btn">
                                                     <input type="checkbox" {{ old('remember') ? 'checked' : '' }}>

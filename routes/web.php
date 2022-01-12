@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\LoginController as AdminLoginController;
+use App\Http\Controllers\Admin\ShippingController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CartController;
@@ -77,6 +78,17 @@ Route::group(['middleware' => 'auth:admin'], function () {
 
     Route::get('/contacts', [ContactController::class, 'index'])->name('contact.index');
     Route::get('/contacts/{id}', [ContactController::class, 'destroy'])->name('contact.destroy');
+
+    Route::get('/shipping', [ShippingController::class, 'index'])->name('shipping.index');
+    Route::post('/shipping', [ShippingController::class, 'store'])->name('shipping.store');
+    Route::get('/shipping/create', [ShippingController::class, 'create'])->name('shipping.create');
+
+    Route::get('/shipping/{id}/edit', [ShippingController::class, 'edit'])->name('shipping.edit');
+    Route::put('/shipping/{id}', [ShippingController::class, 'update'])->name('shipping.update');
+    Route::get('/shipping/{id}', [ShippingController::class, 'destroy'])->name('shipping.destroy');
+
+
+
     // Route::get('/contacts/{id}/edit', [ContactController::class, 'edit'])->name('contact.edit');
     // Route::put('/contacts/{id}', [ContactController::class, 'update'])->name('contact.update');
 });
@@ -93,7 +105,10 @@ Route::group(['middleware' => 'auth:web'], function () {
     Route::view('/view-cart', 'frontend.cart')->name('frontend.cart');
     Route::get('/clear-cart/{id}', [CartController::class, 'clearCart'])->name('cart.clear');
 
+    Route::view('/checkout', 'frontend.checkout')->name('user.checkout');
+
     Route::put('/update/{id}', [HomeController::class, 'update'])->name('user.update');
+    Route::view('/change-password', 'frontend.change-password')->name('change-password.view');
     Route::post('/change-password', [ChangePasswordController::class, 'store'])->name('user.password');
 
 

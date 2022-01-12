@@ -21,7 +21,7 @@
                     <div id="faq" class="panel-group">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h5 class="panel-title"><span>1</span> <a data-toggle="collapse" data-parent="#faq" href="#my-account-1">Edit your account information </a></h5>
+                                <h5 class="panel-title"><a data-toggle="collapse" data-parent="#faq" href="#my-account-1">Edit your account information </a></h5>
                             </div>
                             <div id="my-account-1" class="panel-collapse collapse show">
                                 <div class="panel-body">
@@ -56,52 +56,6 @@
                                             </div>
                                         </div>
                                     </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h5 class="panel-title"><span>2</span> <a data-toggle="collapse" data-parent="#faq" href="#my-account-2">Change your password </a></h5>
-                            </div>
-                            <div id="my-account-2" class="panel-collapse collapse">
-                                <div class="panel-body">
-                                    <div class="billing-information-wrapper">
-                                        <div class="account-info-wrapper">
-                                            <h4>Change Password</h4>
-                                            <h5>Your Password</h5>
-                                        </div>
-                                        <form action="{{route('user.password')}}" method="POST">
-                                            @csrf
-                                        <div class="row">
-                                            <div class="col-lg-12 col-md-12">
-                                                <div class="billing-info">
-                                                    <label>Current Password</label>
-                                                    <input type="password" name="current_password">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12 col-md-12">
-                                                <div class="billing-info">
-                                                    <label>New Password</label>
-                                                    <input type="password" name="new_password">
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-12 col-md-12">
-                                                <div class="billing-info">
-                                                    <label>Confirm Password</label>
-                                                    <input type="password" name="new_confirm_password">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="billing-back-btn">
-                                            <div class="billing-back">
-                                                <a href="{{route('first.page')}}"><i class="ion-arrow-up-c"></i> back</a>
-                                            </div>
-                                            <div class="billing-btn">
-                                                <button type="submit">Change Password</button>
-                                            </div>
-                                        </div>
-                                        </form>
                                     </div>
                                 </div>
                             </div>
