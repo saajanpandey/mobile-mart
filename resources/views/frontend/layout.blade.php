@@ -156,23 +156,24 @@
                     <div class="footer-top gray-bg-3 pb-35">
                         <div class="container">
                             <div class="row">
+                                @auth
                                 <div class="col-lg-3 col-md-6 col-sm-6">
                                     <div class="footer-widget mb-40">
                                         <div class="footer-title mb-25">
                                             <h4>My Account</h4>
                                         </div>
+
                                         <div class="footer-content">
                                             <ul>
-                                                <li><a href="my-account.html">My Account</a></li>
-                                                <li><a href="about-us.html">Order History</a></li>
-                                                <li><a href="wishlist.html">WishList</a></li>
-                                                <li><a href="#">Newsletter</a></li>
-                                                <li><a href="about-us.html">Order History</a></li>
-                                                <li><a href="#">International Orders</a></li>
+                                                <li><a href="{{route('home')}}">My Account</a></li>
+                                                <li><a href="{{route('frontend.cart')}}">Order History</a></li>
                                             </ul>
                                         </div>
+
+
                                     </div>
                                 </div>
+                                @endauth
                                 <div class="col-lg-3 col-md-6 col-sm-6">
                                     <div class="footer-widget mb-40">
                                         <div class="footer-title mb-25">
@@ -180,29 +181,8 @@
                                         </div>
                                         <div class="footer-content">
                                             <ul>
-                                                <li><a href="about-us.html">About Us</a></li>
-                                                <li><a href="#">Delivery Information</a></li>
-                                                <li><a href="#">Privacy Policy</a></li>
-                                                <li><a href="#">Terms & Conditions</a></li>
-                                                <li><a href="#">Customer Service</a></li>
-                                                <li><a href="#">Return Policy</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-md-6 col-sm-6">
-                                    <div class="footer-widget mb-40">
-                                        <div class="footer-title mb-25">
-                                            <h4>Quick Links</h4>
-                                        </div>
-                                        <div class="footer-content">
-                                            <ul>
-                                                <li><a href="#">Support Center</a></li>
-                                                <li><a href="#">Term & Conditions</a></li>
-                                                <li><a href="#">Shipping</a></li>
-                                                <li><a href="#">Privacy Policy</a></li>
-                                                <li><a href="#">Help</a></li>
-                                                <li><a href="#">FAQS</a></li>
+                                                <li><a href="{{route('frontend.about-us')}}">About Us</a></li>
+                                                <li><a href="{{route('frontend.contact-us')}}">For Queries</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -213,17 +193,16 @@
                                             <h4>Contact Us</h4>
                                         </div>
                                         <div class="footer-about">
-                                            <p>Your current address goes to here,120 haka, angladesh</p>
+                                            <p>NewRoad,Kathmandu</p>
                                             <div class="footer-contact mt-20">
                                                 <ul>
-                                                    <li>(+008) 254 254 254 25487</li>
-                                                    <li>(+009) 358 587 657 6985</li>
+                                                    <li>4461828</li>
+                                                    <li>4223269</li>
                                                 </ul>
                                             </div>
                                             <div class="footer-contact mt-20">
                                                 <ul>
-                                                    <li>yourmail@example.com</li>
-                                                    <li>example@admin.com</li>
+                                                    <li>kypimo@mailinator.com</li>
                                                 </ul>
                                             </div>
                                         </div>

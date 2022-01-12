@@ -22,7 +22,7 @@
                         <div class="col-lg-6">
                             <div class="small-title mb-30">
                                 <h2>Contact Form</h2>
-                                <p>For available queries and problems</p>
+                                <p>For queries and feedback</p>
                             </div>
                             <form  action="{{route('contact.store')}}" method="POST">
                                 @csrf
@@ -75,21 +75,21 @@
                         <div class="col-lg-6">
                             <div class="small-title mb-30">
                                 <h2>Contact Address</h2>
-                                <p>There are many variations of passages of Lorem Ipsum available, but the majority Lorem Ipsum available.</p>
+                                <p>The ways to reach us.</p>
                             </div>
                             <div class="row">
                                 <div class="col-lg-12 col-md-12">
                                     <div class="contact-information mb-30">
                                         <h4>Our Address</h4>
-                                        <p>House. 9, Road. 12, Widgets. Orled. Sydney. Milaro.</p>
+                                        <p>NewRoad, Kathmandu</p>
                                     </div>
                                 </div>
                                 <div class="col-lg-12 col-md-12">
                                     <div class="contact-information contact-mrg mb-30">
                                         <h4>Phone Number</h4>
                                         <p>
-                                            <a href="tel:01234567890">01234 567 890</a>
-                                            <a href="tel:01234567891">01234 567 891</a>
+                                            <a href="tel:9774461828">4461828</a>
+                                            <a href="tel:9774223269">4223269</a>
                                         </p>
                                     </div>
                                 </div>
@@ -97,8 +97,7 @@
                                     <div class="contact-information contact-mrg mb-30">
                                         <h4>Web Address</h4>
                                         <p>
-                                            <a href="mailto:info@example.com">info@example.com</a>
-                                            <a href="#">www.example.com</a>
+                                            <a href="mailto:kypimo@mailinator.com">kypimo@mailinator.com</a>
                                         </p>
                                     </div>
                                 </div>
