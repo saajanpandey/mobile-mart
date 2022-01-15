@@ -49,4 +49,29 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    public function render($request, Throwable $exception)
+    {
+        if ($this->isHttpException($exception)) {
+            switch ($exception->getStatusCode()) {
+
+                case 404:
+                    return redirect()->route('notfound');
+                    break;
+
+                case 405:
+                    return redirect()->route('unauthenticated');
+
+                case '500':
+                    return redirect()->route('internal');
+                    break;
+
+                default:
+                    return redirect()->route('notfound');
+                    break;
+            }
+        } else {
+            return parent::render($request, $exception);
+        }
+    }
 }

@@ -116,4 +116,20 @@ class OrderController extends Controller
     {
         //
     }
+
+    public function getMonthly()
+    {
+        $start = Carbon::now()->startOfMonth();
+        $end = Carbon::now()->endOfMonth();
+        $orders = Order::where('created_at', '>=', $start)->where('created_at', '<=', $end)->where('order_status', 3)->get()->sum("price");
+        return $orders;
+    }
+
+    public function getYearly()
+    {
+        $start = Carbon::now()->startOfYear();
+        $end = Carbon::now()->endOfYear();
+        $orders = Order::where('created_at', '>=', $start)->where('created_at', '<=', $end)->where('order_status', 3)->get()->sum("price");
+        return $orders;
+    }
 }

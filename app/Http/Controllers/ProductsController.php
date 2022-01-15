@@ -149,4 +149,10 @@ class ProductsController extends Controller
         $products = Products::with('brand')->where('status', '1')->paginate(8);
         return $products;
     }
+
+    public function totalProducts()
+    {
+        $products = Products::get()->count();
+        return $products;
+    }
 }

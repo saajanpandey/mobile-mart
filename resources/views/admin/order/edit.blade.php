@@ -21,7 +21,7 @@
                  <div class="form-group row">
                      <label  class="col-sm-2 col-form-label">Delivery Date</label>
                      <div class="col-sm-10">
-                       <input type="text" class="form-control datetimepicker @error('delivery_date') is-invalid @enderror" name="delivery_date" id="datetimepicker">
+                       <input type="text" class="form-control datetimepicker @error('delivery_date') is-invalid @enderror" name="delivery_date" value="{{$order->delivery_date??''}}" id="datetimepicker">
                        @error('delivery_date')
                                      <span class="invalid-feedback" role="alert">
                                          <strong>{{ $message }}</strong>

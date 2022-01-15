@@ -93,4 +93,10 @@ class ContactController extends Controller
         $contact->delete();
         return redirect()->route('contact.index')->with('success', 'The data was deleted successfully');;
     }
+
+    public function getTotal()
+    {
+        $contacts = Contact::all()->count();
+        return $contacts;
+    }
 }

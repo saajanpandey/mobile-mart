@@ -39,6 +39,11 @@ Route::view('/shop', 'frontend.shop')->name('frontend.shop');
 Route::post('/contacts', [ContactController::class, 'store'])->name('contact.store');
 Route::get('/search', [SearchController::class, 'index'])->name('search.product');
 
+Route::view('/not-found', '404')->name('notfound');
+Route::view('/internal-error', '500')->name('internal');
+Route::view('/unauthenticated', '405')->name('unauthenticated');
+
+
 
 Auth::routes();
 
