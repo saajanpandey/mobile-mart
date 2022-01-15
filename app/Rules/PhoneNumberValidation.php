@@ -25,7 +25,7 @@ class PhoneNumberValidation implements Rule
      */
     public function passes($attribute, $value)
     {
-        return strlen($value) == 10;
+        return strlen($value) >= 10;
     }
 
     /**

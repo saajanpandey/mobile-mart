@@ -6,8 +6,8 @@ use App\Http\Requests\OrderRequest;
 use App\Models\Cart;
 use App\Models\Order;
 use Carbon\Carbon;
-use Exception;
 use Illuminate\Http\Request;
+use DB;
 
 class OrderController extends Controller
 {
@@ -18,7 +18,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $orders = Order::paginate(8);
+        return view('admin.order.index', compact('orders'));
     }
 
     /**
@@ -37,11 +38,10 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(OrderRequest $request)
     {
         try {
-            $cart = Cart::find($request->cart_id);
-            $cart->delete();
+            DB::beginTransaction();
             $order = new Order();
             $data['user_id'] = $request->user_id;
             $data['address'] = $request->address;
@@ -50,9 +50,18 @@ class OrderController extends Controller
             $data['order_status'] = 1;
             $data['order_date'] = Carbon::now();
             $data['price'] =  $request->price;
-            $order->create($data);
+            $orders = $order->create($data);
+            $cart = Cart::find($request->cart_id);
+            $items = $cart->where('user_id', $request->user_id)->get();
+            foreach ($items as $item) {
+                $productId = $item->product_id;
+                $orders->products()->attach($productId);
+                $item->delete();
+            }
+            DB::commit();
             return redirect()->route('first.page')->with('message', 'Order Placed Successfully');
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
+            DB::rollback();
             return redirect()->route('first.page')->with('error', 'Order Cannot Be Placed');
         }
     }

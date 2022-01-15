@@ -53,23 +53,33 @@
                                             <div class="col-lg-12 col-md-12">
                                                 <div class="billing-info">
                                                     <label>Address</label>
-                                                    <input type="text" name="address">
+                                                    <input type="text" name="address" class="form-control @error('address') is-invalid @enderror">
+                                                    @error ('address')
+                                                    <span class="invalid-feedback" role="alert">
+                                                      <strong>{{ $message }}</strong>
+                                                  </span>
+                                                  @enderror
                                                 </div>
                                             </div>
                                             <div class="col-lg-12 col-md-12">
                                                 <div class="billing-info">
                                                     <label>Phone Number</label>
-                                                    <input type="text" name="cellphone_number">
+                                                    <input type="text" name="cellphone_number"class="form-control @error('cellphone_number') is-invalid @enderror">
+                                                    @error ('cellphone_number')
+                                                    <span class="invalid-feedback" role="alert">
+                                                      <strong>{{ $message }}</strong>
+                                                  </span>
+                                                  @enderror
                                                 </div>
                                             </div>
                                             <div class="col-lg-12 col-md-12">
                                                 <div class="billing-info">
                                                     <label>Payment Method</label>
-                                                    <select class="custom-select form-control @error('payment') is-invalid @enderror" id="inputGroupSelect01" name="payment_method">
+                                                    <select class="custom-select form-control @error('payment_method') is-invalid @enderror" id="inputGroupSelect01" name="payment_method">
                                                         <option>Select Payment Method</option>
                                                         <option value="1">Cash On Delivery</option>
                                                       </select>
-                                                      @error ('payment')
+                                                      @error ('payment_method')
                                                       <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>

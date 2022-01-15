@@ -26,7 +26,7 @@ class OrderRequest extends FormRequest
     {
         return [
             'address' => 'required|string|max:255',
-            'cell_phone' => ['required', 'numeric', new PhoneNumberValidation()],
+            'cellphone_number' => ['required', 'numeric', new PhoneNumberValidation()],
             'payment_method' => 'required|integer',
         ];
     }

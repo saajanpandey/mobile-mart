@@ -54,6 +54,12 @@
             </li>
 
             <li class="nav-item">
+                <a class="nav-link" href="{{route('order.index')}}">
+                    <i class="fa fa-book"></i>
+                    <span>Order Status</span></a>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link" href="{{route('contact.index')}}">
                     <i class="fa fa-question"></i>
                     <span>Customer Queries</span></a>

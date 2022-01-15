@@ -96,6 +96,9 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::get('/shipping/{id}', [ShippingController::class, 'destroy'])->name('shipping.destroy');
 
 
+    Route::get('/order', [OrderController::class, 'index'])->name('order.index');
+
+
 
     // Route::get('/contacts/{id}/edit', [ContactController::class, 'edit'])->name('contact.edit');
     // Route::put('/contacts/{id}', [ContactController::class, 'update'])->name('contact.update');
