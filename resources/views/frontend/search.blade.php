@@ -37,7 +37,6 @@
                           </form>
                     </div>
                 </div>
-                @if($searches->count()>1)
                 <div class="grid-list-product-wrapper">
                     <div class="product-grid product-view pb-20">
                         <div class="row">
@@ -84,7 +83,7 @@
                     </div>
                         {!!$searches->links()!!}
                 </div>
-                @else
+                @if($searches->count()==null)
                 <h4 style="margin-left: 10px;">No Products Found!!!</h4>
                 @endif
             </div>

@@ -10,6 +10,7 @@ use App\Http\Controllers\ChangePasswordController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\SearchController;
 use App\Models\Products;
@@ -125,4 +126,6 @@ Route::group(['middleware' => 'auth:web'], function () {
     Route::get('/comments/{id}', [commentController::class, 'destroy'])->name('comments.destroy');
     Route::get('/comments/{id}/edit', [CommentController::class, 'edit'])->name('comments.edit');
     Route::put('/comments/{id}', [CommentController::class, 'update'])->name('comments.update');
+
+    Route::post('/order', [OrderController::class, 'store'])->name('order.store');
 });

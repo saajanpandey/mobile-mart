@@ -2,23 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Products;
+use App\Http\Requests\OrderRequest;
+use App\Models\Cart;
+use App\Models\Order;
+use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\Request;
 
-class SearchController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $this->validate($request, [
-            'keyword' => 'required|string',
-        ]);
-        $searches = Products::where('name', 'Like', '%' . $request->keyword . '%')->paginate(8);
-        return view('frontend.search', compact('searches'));
+        //
     }
 
     /**
@@ -39,6 +39,22 @@ class SearchController extends Controller
      */
     public function store(Request $request)
     {
+        try {
+            $cart = Cart::find($request->cart_id);
+            $cart->delete();
+            $order = new Order();
+            $data['user_id'] = $request->user_id;
+            $data['address'] = $request->address;
+            $data['cellphone_number'] = $request->cellphone_number;
+            $data['payment_method'] = $request->payment_method;
+            $data['order_status'] = 1;
+            $data['order_date'] = Carbon::now();
+            $data['price'] =  $request->price;
+            $order->create($data);
+            return redirect()->route('first.page')->with('message', 'Order Placed Successfully');
+        } catch (Exception $e) {
+            return redirect()->route('first.page')->with('error', 'Order Cannot Be Placed');
+        }
     }
 
     /**

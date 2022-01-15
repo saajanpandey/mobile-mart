@@ -23,26 +23,25 @@
                         <div class="overview-content-2">
 							<h4>Welcome To</h4>
                             <h2>Mobile Pasal</h2>
-                            <p class="peragraph-blog">Phuler Shop is a premium HTML template designed and develoved from the ground up with the sole purpose of helping you create an astonishing, the beautiful and user friendly website that will boost your product’s sales.</p>
-                            <p>The theme design package provides a complete Magento theme set for your online store according to your desired theme. This includes all Magento themes that are required for your online store's successful implementation.</p>
+                            <p class="peragraph-blog">We are an authorised and genuine smartphone distributor located at Pako, NewRoad, Kathmandu. We keep our customers at the heart of everything we do and make sure we deliver the quality over quantity with many exciting offers as per festive and hot sales season. We started this store back in 2017 with a vision of one stop smartphone shop with both Andriod and iOS phones ranging from pocket friendly, mid-tier flagship killer to absolute flagship of a smartphone. We provide a year warranty services with free tempered glass on each of our purchases. Our delivery rates are superior than our competition and we tend to be of services to our customers in all the best way possible. Happy Shopping ! </p>
                             <div class="overview-btn mt-40">
                                 <img src="assets/img/icon-img/signature.png" alt="Candidate Signature">
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-12">
+                    {{-- <div class="col-lg-6 col-md-12">
                         <div class="overview-img text-center">
                             <a href="#">
                                 <img src="assets/img/banner/about-us.jpg" alt="">
                             </a>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>
 		<!-- About Us Area End -->
 		<!-- Team Area Start -->
-		<div class="team-area pt-95 pb-70">
+		{{-- <div class="team-area pt-95 pb-70">
             <div class="container">
                 <div class="product-top-bar section-border mb-50">
                     <div class="section-title-wrap style-two text-center">
@@ -124,7 +123,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
 		<!-- Team Area End -->
 
 @endsection

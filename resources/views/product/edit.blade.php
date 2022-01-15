@@ -40,11 +40,17 @@
                   <div class="form-group row">
                     <label  class="col-sm-2 col-form-label">Product Brand</label>
                     <div class="col-sm-10">
-                        <select class="custom-select" id="inputGroupSelect01" name="brand_id">
+                        <select class="form-control @error('brand_id') is-invalid @enderror" name="brand_id">
+                            <option>Select Brand</option>
                             @foreach ($brands as $brand)
-                            <option value="{{$brand->id}}">{{$brand->name}}</option>
+                            <option value="{{ $brand->id }}" @if(old('brand_id') == $brand->id || $brand->id == $product->brand_id) selected @endif>{{ $brand->name }}</option>
                             @endforeach
                           </select>
+                          @error ('brand_id')
+                          <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
                     </div>
                   </div>
 
@@ -63,10 +69,16 @@
                   <div class="form-group row">
                     <label  class="col-sm-2 col-form-label">Product Status</label>
                     <div class="col-sm-10">
-                        <select class="custom-select" id="inputGroupSelect01" name="status">
-                            <option value="1">Enable</option>
-                            <option value="0">Disable</option>
+                        <select class="custom-select form-control @error('status') is-invalid @enderror" id="inputGroupSelect01" name="status">
+                            <option>Select Status</option>
+                            <option value="1" @if($product->status==1 ) selected @endif>Enable</option>
+                            <option value="0"@if($product->status==0 ) selected @endif>Disable</option>
                           </select>
+                          @error('status')
+                          <span class="invalid-feedback" role="alert">
+                              <strong>{{ $message }}</strong>
+                          </span>
+                        @enderror
                     </div>
                   </div>
 

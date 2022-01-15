@@ -63,7 +63,7 @@
                                             @if (Route::has('login'))
 
                                                 @auth
-                                                  <li class="top-hover"><a href="{{route('home')}}">{{Auth::user()->name}}</a>
+                                                  <li class="top-hover"><a href="{{route('home')}}">{{Auth::user()->first_name}}</a>
                                                   <ul class="submenu">
                                                     <li><a href="{{ url('/home') }}">Edit Profile</a></li>
                                                     <li><a href="{{route('change-password.view')}}">change Password</a></li>
@@ -113,13 +113,13 @@
 
                 </ul>
                 <div class="shopping-cart-total">
-                    <h4>Shipping : <span>{{$shipping->getShipping()->price}}</span></h4>
+                    <h4>Shipping : <span>{{$shipping->getShipping()->price ?? 0}}</span></h4>
                     @php
                     $sum=0;
                     foreach ($carts->getCartByUser(Auth::user()->id) as $cart) {
                         $sum += ($cart->product->price) * $cart->quantity;
                     }
-                    $charge =$shipping->getShipping()->price;
+                    $charge =$shipping->getShipping()->price ?? 0;
                     $finalSum = $sum+ $charge;
                     @endphp
                     <h4>Total : <span class="shop-total">{{$finalSum}}</span></h4>
@@ -193,7 +193,7 @@
                                             <h4>Contact Us</h4>
                                         </div>
                                         <div class="footer-about">
-                                            <p>NewRoad,Kathmandu</p>
+                                            <p>Mobile Bazar, Pako Sadak, Kathmandu 44600</p>
                                             <div class="footer-contact mt-20">
                                                 <ul>
                                                     <li>4461828</li>

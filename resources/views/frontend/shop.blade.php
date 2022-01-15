@@ -26,7 +26,6 @@
                     </div>
                     <div class="product-sorting-wrapper">
                         <form  autocomplete="off" action="{{route('search.product')}}" method="GET">
-                            @csrf
                             <div class="form-row">
                               <div class="col-7">
                                 <input type="text" class="form-control" placeholder="Search" name="keyword">

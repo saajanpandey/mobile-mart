@@ -106,10 +106,14 @@
                                 <div class="login-register-form">
                                     <form action="{{ route('register') }}" method="POST">
                                         @csrf
-                                        <input type="text" name="name" placeholder="Username">
-                                        @if ($errors->has('name'))
-                                            <div class="alert alert-danger">{{$errors->first('name') }}</div>
-                                             @endif
+                                        <input type="text" name="first_name" placeholder="First Name">
+                                        @if ($errors->has('first_name'))
+                                            <div class="alert alert-danger">{{$errors->first('first_name') }}</div>
+                                        @endif
+                                        <input type="text" name="last_name" placeholder="Last Name">
+                                        @if ($errors->has('last_name'))
+                                            <div class="alert alert-danger">{{$errors->first('last_name') }}</div>
+                                        @endif
                                         <input name="email" placeholder="Email" type="email">
                                         @if ($errors->has('email'))
                                         <div class="alert alert-danger">{{$errors->first('email') }}</div>

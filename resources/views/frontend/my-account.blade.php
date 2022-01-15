@@ -36,8 +36,20 @@
                                         <div class="row">
                                             <div class="col-lg-12 col-md-12">
                                                 <div class="billing-info">
-                                                    <label>Full Name</label>
-                                                    <input type="text" value="{{Auth::user()->name}}" name="name">
+                                                    <label>First Name</label>
+                                                    <input type="text" value="{{Auth::user()->first_name}}" name="first_name">
+                                                    @if ($errors->has('first_name'))
+                                                      <div class="alert alert-danger">{{$errors->first('first_name') }}</div>
+                                                     @endif
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12">
+                                                <div class="billing-info">
+                                                    <label>Last Name</label>
+                                                    <input type="text" value="{{Auth::user()->last_name}}" name="last_name">
+                                                    @if ($errors->has('last_name'))
+                                                    <div class="alert alert-danger">{{$errors->first('last_name') }}</div>
+                                                @endif
                                                 </div>
                                             </div>
                                             <div class="col-lg-12 col-md-12">

@@ -26,9 +26,10 @@ class ProductRequest extends FormRequest
         return [
             'name' => 'required|max:255',
             'price' => 'required|integer',
-            'description' => 'nullable|max:500|',
+            'description' => 'required|max:500|',
             'image' => 'required|mimes:png,jpg',
-            'status' => 'required',
+            'status' => 'required|integer',
+            'brand_id' => 'required|integer',
         ];
     }
 
@@ -40,7 +41,8 @@ class ProductRequest extends FormRequest
             'description.required' => 'The description field is required',
             'image:mimes' => 'The product image should be in correct format',
             'image.required' => 'The product image is required field',
-            'status.required' => 'The status is required field',
+            'status.integer' => 'Please select a status',
+            'brand_id.integer' => 'Please select a brand',
         ];
     }
 }

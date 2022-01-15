@@ -139,11 +139,11 @@
                     foreach ($carts->getCartByUser(Auth::user()->id) as $cart) {
                         $sum += ($cart->product->price) * $cart->quantity;
                     }
-                    $charge = $shipping->getShipping()->price;
+                    $charge = $shipping->getShipping()->price??0;
                     $finalSum = $sum+$charge;
                     @endphp
                             <h5>Total products <span>NPR {{$sum}}</span></h5>
-                            <h5>Shipping Charge<span>NRP {{$shipping->getShipping()->price}}</span></h5>
+                            <h5>Shipping Charge<span>NRP {{$shipping->getShipping()->price??0}}</span></h5>
                             <div class="total-shipping">
                             </div>
                             <h4 class="grand-totall-title">Grand Total  <span>NPR {{$finalSum}}</span></h4>
