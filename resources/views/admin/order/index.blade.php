@@ -1,4 +1,7 @@
 @extends('admin.sidebar')
+@section('title')
+    Order Status
+@endsection
 @section('main-content')
 <div class="container-fluid">
 

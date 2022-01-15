@@ -1,9 +1,9 @@
 @extends('admin.sidebar')
+@section('title')
+    Brand List
+@endsection
 @section('main-content')
 <div class="container-fluid">
-
-
-    <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header d-flex">
             <h4 class="m-0 font-weight-bold text-primary mr-auto">Brands</h4>
@@ -52,8 +52,7 @@
     </div>
 
 </div>
-<!-- /.container-fluid -->
 
 </div>
-<!-- End of Main Content -->
+
 @endsection

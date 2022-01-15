@@ -1,4 +1,7 @@
   @extends('admin.sidebar')
+  @section('title')
+  Create Product
+  @endsection
   @section('main-content')
 
    <div class="mx-auto" style="width: 700px;">

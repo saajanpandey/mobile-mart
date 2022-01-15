@@ -40,19 +40,12 @@ Route::post('/contacts', [ContactController::class, 'store'])->name('contact.sto
 Route::get('/search', [SearchController::class, 'index'])->name('search.product');
 
 
-
-
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('logout', [LoginController::class, 'logout']);
 
 Route::get('/product/detail/{id}', [ProductsController::class, 'show'])->name('products.details');
-
-
-
-
 
 
 Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
@@ -100,19 +93,10 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::get('/order/{id}/edit', [OrderController::class, 'edit'])->name('order.edit');
     Route::put('/order/{id}', [OrderController::class, 'update'])->name('order.update');
     Route::get('/order/{id}', [OrderController::class, 'destroy'])->name('order.destroy');
-
-
-
-
-
-
-    // Route::get('/contacts/{id}/edit', [ContactController::class, 'edit'])->name('contact.edit');
-    // Route::put('/contacts/{id}', [ContactController::class, 'update'])->name('contact.update');
 });
 
 Route::group(['middleware' => 'auth:web'], function () {
 
-    // Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
     Route::get('/cart/{id}/edit', [BrandController::class, 'edit'])->name('cart.edit');
     Route::get('/cart/create', [BrandController::class, 'create'])->name('cart.create');
     Route::post('/cart', [CartController::class, 'store'])->name('cart.store');

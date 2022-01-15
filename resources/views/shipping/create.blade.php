@@ -1,4 +1,7 @@
 @extends('admin.sidebar')
+@section('title')
+Add Shipping Charge
+@endsection
 @section('main-content')
 
  <div class="mx-auto" style="width: 700px;">

@@ -1,11 +1,15 @@
-
-
   @extends('admin.sidebar')
+  @section('title')
+Create Brand
+  @endsection
   @section('main-content')
   <div class="mx-auto" style="width: 700px;">
     <div class="card shadow">
         <div class="card-header">
           Create Brand
+          <a href="{{route('brands.index')}}"><button class="close" type="button">
+            <span aria-hidden="true">×</span>
+        </button></a>
         </div>
         <div class="card-body">
             <form class="form-inline" action="{{route('brands.store')}}" method="POST">

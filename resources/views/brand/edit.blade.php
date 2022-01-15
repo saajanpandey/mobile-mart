@@ -1,6 +1,7 @@
-
-
- @extends('admin.sidebar')
+@extends('admin.sidebar')
+@section('title')
+Edit Brand
+ @endsection
 @section('main-content')
 
   <div class="d-flex justify-content-center">

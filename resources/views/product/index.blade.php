@@ -1,4 +1,7 @@
 @extends('admin.sidebar')
+@section('title')
+Product List
+@endsection
 @section('main-content')
  <!-- Begin Page Content -->
  <div class="container-fluid">

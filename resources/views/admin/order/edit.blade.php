@@ -1,9 +1,12 @@
 
 
  @extends('admin.sidebar')
+ @section('title')
+     Edit Order Status
+ @endsection
  @section('main-content')
 
-   <div class="mx-auto" style="width: 700px;"">
+   <div class="mx-auto" style="width: 700px;">
      <div class="card shadow">
          <div class="card-header">
            Edit Order Status
