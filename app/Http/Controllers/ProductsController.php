@@ -135,7 +135,7 @@ class ProductsController extends Controller
             File::delete($image_path);
         }
         $product->delete();
-        return redirect()->route('products.index')->with('success', 'The data was deleted successfully');;
+        return redirect()->route('products.index')->with('success', 'The data was deleted successfully');
     }
 
     public function getProducts()

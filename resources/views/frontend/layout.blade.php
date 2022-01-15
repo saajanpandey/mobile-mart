@@ -125,8 +125,10 @@
                     <h4>Total : <span class="shop-total">{{$finalSum}}</span></h4>
                 </div>
                 <div class="shopping-cart-btn">
+                    @if($carts->getCartByUser(Auth::user()->id)->count()>0)
                     <a href="{{route('frontend.cart')}}">view cart</a>
                     <a href="{{route('user.checkout')}}">checkout</a>
+                    @endif
                 </div>
             </div>
         </div>

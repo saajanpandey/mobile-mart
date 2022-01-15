@@ -97,6 +97,12 @@ Route::group(['middleware' => 'auth:admin'], function () {
 
 
     Route::get('/order', [OrderController::class, 'index'])->name('order.index');
+    Route::get('/order/{id}/edit', [OrderController::class, 'edit'])->name('order.edit');
+    Route::put('/order/{id}', [OrderController::class, 'update'])->name('order.update');
+    Route::get('/order/{id}', [OrderController::class, 'destroy'])->name('order.destroy');
+
+
+
 
 
 

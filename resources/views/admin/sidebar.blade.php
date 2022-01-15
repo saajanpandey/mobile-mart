@@ -6,9 +6,9 @@
 
 
     @if (session()->has('success'))
-    <div class="alert alert-dismissable alert-success">
+    <div class="alert alert-success">
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+            <span aria-hidden="false">&times;</span>
         </button>
         <strong>
             {!! session()->get('success') !!}
@@ -33,9 +33,8 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
-
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="{{route('admin.dash')}}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -179,9 +178,43 @@
                 </div>
 
                 @include('scripts')
-                <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+                {{-- <script src="{{asset('/admin/vendor/jquery/jquery.min.js')}}"></script> --}}
+                <script src="{{asset('/admin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+
+                <script src="https://cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+                {{-- <script src="{{asset('/admin/vendor/jquery-easing/jquery.easing.min.js')}}"></script> --}}
+
+
+                <script src="{{asset('/admin/js/sb-admin-2.min.js')}}"></script>
+
+                {{-- <script src="{{asset('/admin/vendor/jquery-easing/jquery.easing.min.js')}}"></script> --}}
+
+                <script src="{{asset('/admin/vendor/chart.js/Chart.min.js')}}"></script>
+
+
+                <script src="{{asset('/admin/js/demo/chart-area-demo.js')}}"></script>
+                <script src="{{asset('/admin/js/demo/chart-pie-demo.js')}}"></script>
+
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
+
+
 <script>
     CKEDITOR.replace('my-editor');
     </script>
-                </body>
+    <script >
+         $('.datetimepicker').datetimepicker({
+            format: 'DD-MM-YYYY',
+             icons:
+        {
+                  up: "fa fa-arrow-up",
+                  down: "fa fa-arrow-down",
+                next: 'fa fa-angle-right',
+                previous: 'fa fa-angle-left'
+
+        },
+});
+    </script>
+ </body>
 @endsection

@@ -20,8 +20,8 @@ class CreateOrdersTable extends Migration
             $table->string('cellphone_number');
             $table->integer('order_status')->nullable();
             $table->integer('payment_method');
-            $table->dateTime('order_date');
-            $table->dateTime('delivery_date')->nullable();
+            $table->date('order_date');
+            $table->date('delivery_date')->nullable();
             $table->bigInteger('price');
             $table->timestamps();
         });

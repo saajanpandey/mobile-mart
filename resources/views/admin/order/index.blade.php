@@ -4,7 +4,7 @@
 
     <div class="card shadow mb-4">
         <div class="card-header d-flex">
-            <h4 class="m-0 font-weight-bold text-primary mr-auto">Order</h4>
+            <h4 class="m-0 font-weight-bold text-primary mr-auto">Order Status</h4>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -12,27 +12,72 @@
                     <thead>
                         <tr>
                             <th>Customer Name</th>
-                            <th></th>
+                            <th>Address</th>
+                            <th>Mobile Number</th>
+                            <th>Products</th>
+                            <th>Total Price(NPR)</th>
+                            <th>Order Date</th>
+                            <th>Payment Method</th>
+                            <th>Order Status</th>
+                            <th>Delivery Date</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
-                            <th>Name</th>
+                            <th>Customer Name</th>
+                            <th>Address</th>
+                            <th>Mobile Number</th>
+                            <th>Products</th>
+                            <th>Total Price(NPR)</th>
+                            <th>Order Date</th>
+                            <th>Payment Method</th>
+                            <th>Order Status</th>
+                            <th>Delivery Date</th>
                             <th>Action</th>
                         </tr>
                     </tfoot>
                     <tbody>
                         @foreach($orders as $order)
                         <tr>
-                            <td>{{$order->user->first_name.$order->user->last_name}}</td>
+                            <td>{{$order->user->first_name.$order->user->last_name??'-'}}</td>
+                            <td>{{$order->address??'-'}}</td>
+                            <td>{{$order->cellphone_number??'-'}}</td>
                             <td>
-                                {{-- <a href="{{route('order.edit',$brand->id)}}" class="btn btn-primary btn-circle">
+                                @foreach ($order->products as $product)
+                                    {{$product->name??'-'}}
+                                @endforeach
+                            </td>
+                            <td>{{$order->price??'-'}}</td>
+                            <td>{{\Carbon\Carbon::parse($order->order_date)->format('Y-m-d')??'-'}}</td>
+                            <td>
+                                @if($order->payment_method==1)
+                                Cash On Delivery
+                                @endif
+                            </td>
+                            <td>
+                                @if($order->order_status==1)
+                                Customer Order
+                                @elseif ($order->order_status==2)
+                                Way To Deliver
+                                @elseif($order->order_status==3)
+                                Delivered
+                                @elseif($order->order_status==4)
+                                Product Returned
+                                @elseif($order->order_status==5)
+                                Re Delivery
+                                @endif
+                            </td>
+                            <td>
+                                {{$order->delivery_date??'-'}}
+                            </td>
+                            <td>
+                                <a href="{{route('order.edit',$order->id)}}" class="btn btn-primary btn-circle">
                                     <i class="fas fa-pen"></i>
-                                </a> --}}
-                                {{-- <a href="{{route('brands.destroy',$brand->id)}}" class="btn btn-danger btn-circle">
+                                </a>
+                                <a href="{{route('order.destroy',$order->id)}}" class="btn btn-danger btn-circle">
                                     <i class="fas fa-trash"></i>
-                                </a> --}}
+                                </a>
                             </td>
                         </tr>
 

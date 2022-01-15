@@ -48,7 +48,7 @@ class OrderController extends Controller
             $data['cellphone_number'] = $request->cellphone_number;
             $data['payment_method'] = $request->payment_method;
             $data['order_status'] = 1;
-            $data['order_date'] = Carbon::now();
+            $data['order_date'] = Carbon::now()->format('Y-m-d');
             $data['price'] =  $request->price;
             $orders = $order->create($data);
             $cart = Cart::find($request->cart_id);
@@ -85,7 +85,8 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $order = Order::find($id);
+        return view('admin.order.edit', compact('order'));
     }
 
     /**
@@ -97,7 +98,12 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $order = Order::find($id);
+        $order->order_status = $request->order_status;
+        $order->delivery_date = $request->delivery_date;
+        $order->save();
+        return redirect()->route('order.index')
+            ->with('success', 'The data was updated successfully');;
     }
 
     /**

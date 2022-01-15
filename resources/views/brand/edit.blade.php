@@ -7,6 +7,9 @@
     <div class="card shadow">
         <div class="card-header">
           Edit Brand
+          <a href="{{route('brands.index')}}"><button class="close" type="button">
+            <span aria-hidden="true">×</span>
+        </button></a>
         </div>
         <div class="card-body">
             <form class="form-inline" action="{{route('brands.update',$brand->id)}}" method="POST">
