@@ -1,7 +1,9 @@
 @inject('products','App\Http\Controllers\ProductsController')
 
 @extends('frontend.layout')
-
+@section('title')
+Mobile Mart
+@endsection
 @section('content')
 
 <!-- Slider Start -->

@@ -1,4 +1,7 @@
 @extends('frontend.layout')
+@section('title')
+    Change Password
+@endsection
 @section('content')
 <div class="breadcrumb-area bg-image-3 ptb-150">
     <div class="container">

@@ -73,6 +73,9 @@
 @endsection --}}
 
 @extends('frontend.layout')
+@section('title')
+    Login In
+@endsection
 @section('content')
     <!-- Breadcrumb Area Start -->
     <div class="breadcrumb-area bg-image-3 ptb-150">

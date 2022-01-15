@@ -1,5 +1,7 @@
 @extends('frontend.layout')
-
+@section('title')
+    Contact Us
+@endsection
 @section('content')
             <!-- Breadcrumb Area Start -->
             <div class="breadcrumb-area bg-image-3 ptb-150">

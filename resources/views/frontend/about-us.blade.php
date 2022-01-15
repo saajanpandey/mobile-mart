@@ -1,5 +1,7 @@
 @extends('frontend.layout')
-
+@section('title')
+About Us
+@endsection
 @section('content')
 
 		<!-- Breadcrumb Area Start -->

@@ -1,5 +1,8 @@
 @inject('products','App\Http\Controllers\ProductsController')
 @extends('frontend.layout')
+@section('title')
+Shop Products
+@endsection
 @section('content')
 <div class="breadcrumb-area bg-image-3 ptb-150">
     <div class="container">
