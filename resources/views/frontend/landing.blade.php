@@ -9,23 +9,11 @@ Mobile Mart
 <!-- Slider Start -->
 <div class="slider-area">
     <div class="slider-active owl-dot-style owl-carousel">
-        <div class="single-slider ptb-240 bg-img" style="background-image:url(assets/img/slider/slider-1.jpg);">
-            <div class="container">
-                <div class="slider-content slider-animated-1">
-                    <h1 class="animated">Want to stay <span class="theme-color">healthy</span></h1>
-                    <h1 class="animated">drink matcha.</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetu adipisicing elit sedeiu tempor inci ut labore et dolore magna aliqua.</p>
-                </div>
-            </div>
+        <div class="single-slider ptb-240 bg-img" style="background-image:url(/frontend/img/slider/Slider-A.jpg);">
         </div>
-        <div class="single-slider ptb-240 bg-img" style="background-image:url(assets/img/slider/slider-1-1.jpg);">
-            <div class="container">
-                <div class="slider-content slider-animated-1">
-                    <h1 class="animated">Want to stay <span class="theme-color">healthy</span></h1>
-                    <h1 class="animated">drink matcha.</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetu adipisicing elit sedeiu tempor inci ut labore et dolore magna aliqua.</p>
-                </div>
-            </div>
+        <div class="single-slider ptb-240 bg-img" style="background-image:url(/frontend/img/slider/Slider-C.jpg);">
+        </div>
+        <div class="single-slider ptb-240 bg-img" style="background-image:url(/frontend/img/slider/Slider-B.jpg);">
         </div>
     </div>
 </div>

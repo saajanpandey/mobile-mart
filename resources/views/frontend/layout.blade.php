@@ -43,8 +43,8 @@
                     <div class="row">
                         <div class="col-lg-3 col-md-4 col-6">
                             <div class="logo">
-                                <a href="index.html">
-                                    <img alt="" src="assets/img/logo/logo.png">
+                                <a href="{{route('first.page')}}">
+                                    <img alt="" src="{{asset("/frontend/img/logo/logo.png")}}" style="width: 80px;  height: 80px;margin: -25px;">
                                 </a>
                             </div>
                         </div>
@@ -168,7 +168,7 @@
                                         <div class="footer-content">
                                             <ul>
                                                 <li><a href="{{route('home')}}">My Account</a></li>
-                                                <li><a href="{{route('frontend.cart')}}">Order History</a></li>
+                                                <li><a href="{{route('frontend.cart')}}">My Cart</a></li>
                                             </ul>
                                         </div>
 
