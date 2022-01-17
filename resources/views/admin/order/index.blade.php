@@ -59,17 +59,7 @@
                                 @endif
                             </td>
                             <td>
-                                @if($order->order_status==1)
-                                Customer Order
-                                @elseif ($order->order_status==2)
-                                Way To Deliver
-                                @elseif($order->order_status==3)
-                                Delivered
-                                @elseif($order->order_status==4)
-                                Product Returned
-                                @elseif($order->order_status==5)
-                                Re Delivery
-                                @endif
+                              {{Config::get('constants.DELIVERY_STATUS')[$order->order_status]}}
                             </td>
                             <td>
                                 {{$order->delivery_date??'-'}}
