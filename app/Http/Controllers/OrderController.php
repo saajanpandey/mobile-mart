@@ -169,4 +169,10 @@ class OrderController extends Controller
         $filename = 'order.xlsx';
         return \Excel::download(new OrderExport($results, $titles), $filename);
     }
+
+    public function getOrders()
+    {
+        $orders = Order::where('order_status', '=', 1)->count();
+        return $orders;
+    }
 }
