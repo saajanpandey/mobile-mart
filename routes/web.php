@@ -98,6 +98,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::get('/order/{id}/edit', [OrderController::class, 'edit'])->name('order.edit');
     Route::put('/order/{id}', [OrderController::class, 'update'])->name('order.update');
     Route::get('/order/{id}', [OrderController::class, 'destroy'])->name('order.destroy');
+    Route::get('/download', [OrderController::class, 'downloadReport'])->name('order.download');
 });
 
 Route::group(['middleware' => 'auth:web'], function () {

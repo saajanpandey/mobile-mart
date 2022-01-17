@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\OrderExport;
 use App\Http\Requests\OrderRequest;
 use App\Models\Cart;
 use App\Models\Order;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use DB;
+use Config;
 
 class OrderController extends Controller
 {
@@ -131,5 +133,40 @@ class OrderController extends Controller
         $end = Carbon::now()->endOfYear();
         $orders = Order::where('created_at', '>=', $start)->where('created_at', '<=', $end)->where('order_status', 3)->get()->sum("price");
         return $orders;
+    }
+
+    public function downloadReport()
+    {
+        $data = Order::all();
+        $titles = array(
+            'customerName' => 'Customer Name',
+            'address' => 'Address',
+            'mobileNumber' => 'Mobile Number',
+            'products' => 'Products',
+            'totalPrice' => 'Total Price',
+            'orderDate' => 'Order Date',
+            'paymentMethod' => 'Payment Method',
+            'orderStatus' => 'Order Status',
+            'deliveryDate' => 'Delivery Date'
+        );
+        foreach ($data as $datum) {
+            try {
+                $results[] = array(
+                    'customerName' => $datum->user->first_name . $datum->user->last_name ?? '-',
+                    'address' => $datum->address ?? '-',
+                    'mobileNumber' => $datum->cellphone_number ?? '-',
+                    'products' => $datum->products->pluck('name')->implode(',') ?? '-',
+                    'totalPrice' => $datum->price ?? '-',
+                    'orderDate' => Carbon::parse($datum->order_date)->format('Y-m-d') ?? '-',
+                    'paymentMethod' => Config::get('constants.PAYMENT_METHOD')[$datum->payment_method],
+                    'orderStatus' => Config::get('constants.DELIVERY_STATUS')[$datum->order_status],
+                    'deliveryDate' => $datum->delivery_date ?? '-'
+                );
+            } catch (\Exception $e) {
+                continue;
+            }
+        }
+        $filename = 'order.xlsx';
+        return \Excel::download(new OrderExport($results, $titles), $filename);
     }
 }

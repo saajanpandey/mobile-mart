@@ -2,7 +2,7 @@
 @inject('shipping', 'App\Http\Controllers\Admin\ShippingController')
 @extends('frontend.layout')
 @section('title')
-    Checkout 
+    Checkout
 @endsection
 @section('content')
 <div class="breadcrumb-area bg-image-3 ptb-150">
@@ -80,7 +80,9 @@
                                                     <label>Payment Method</label>
                                                     <select class="custom-select form-control @error('payment_method') is-invalid @enderror" id="inputGroupSelect01" name="payment_method">
                                                         <option>Select Payment Method</option>
-                                                        <option value="1">Cash On Delivery</option>
+                                                        @foreach (Config::get('constants.PAYMENT_METHOD') as $key=>$value)
+                                                        <option value="{{$key}}">{{$value}}</option>
+                                                        @endforeach
                                                       </select>
                                                       @error ('payment_method')
                                                       <span class="invalid-feedback" role="alert">

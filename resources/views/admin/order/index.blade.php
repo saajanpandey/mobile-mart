@@ -8,6 +8,10 @@
     <div class="card shadow mb-4">
         <div class="card-header d-flex">
             <h4 class="m-0 font-weight-bold text-primary mr-auto">Order Status</h4>
+            <a href="{{route('order.download')}}" class="btn btn-primary btn-circle .btn-sm ">
+                <i class="fa fa-download"></i>
+             </a>
+             Download Report
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -54,9 +58,7 @@
                             <td>{{$order->price??'-'}}</td>
                             <td>{{\Carbon\Carbon::parse($order->order_date)->format('Y-m-d')??'-'}}</td>
                             <td>
-                                @if($order->payment_method==1)
-                                Cash On Delivery
-                                @endif
+                                {{Config::get('constants.PAYMENT_METHOD')[$order->payment_method]}}
                             </td>
                             <td>
                               {{Config::get('constants.DELIVERY_STATUS')[$order->order_status]}}
