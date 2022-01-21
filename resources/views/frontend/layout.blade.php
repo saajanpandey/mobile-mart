@@ -67,6 +67,7 @@
                                                   <ul class="submenu">
                                                     <li><a href="{{ url('/home') }}">Edit Profile</a></li>
                                                     <li><a href="{{route('change-password.view')}}">change Password</a></li>
+                                                    <li><a href="{{route('user.history')}}">My History</a></li>
                                                     <li><a href="{{url('logout')}}">logout</a></li>
                                                 </ul>
                                             </li>
@@ -169,6 +170,7 @@
                                             <ul>
                                                 <li><a href="{{route('home')}}">My Account</a></li>
                                                 <li><a href="{{route('frontend.cart')}}">My Cart</a></li>
+                                                <li><a href="{{route('user.history')}}">My History</a></li>
                                             </ul>
                                         </div>
 

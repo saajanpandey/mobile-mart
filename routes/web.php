@@ -127,4 +127,6 @@ Route::group(['middleware' => 'auth:web'], function () {
     Route::put('/comments/{id}', [CommentController::class, 'update'])->name('comments.update');
 
     Route::post('/order', [OrderController::class, 'store'])->name('order.store');
+
+    Route::view('/history', 'frontend.history')->name('user.history');
 });

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\UserHistory;
 use Illuminate\Http\Request;
 
 class UserHistoryController extends Controller
@@ -80,5 +81,11 @@ class UserHistoryController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getHistoryByUser($id)
+    {
+        $histories = UserHistory::where('user_id', $id)->get();
+        return $histories;
     }
 }
