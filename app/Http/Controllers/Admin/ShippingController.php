@@ -101,7 +101,7 @@ class ShippingController extends Controller
 
     public function getShipping()
     {
-        $shipping = Shipping::where('id', 1)->first();
+        $shipping = Shipping::where('id', '>=', 1)->first();
         return $shipping;
     }
 }

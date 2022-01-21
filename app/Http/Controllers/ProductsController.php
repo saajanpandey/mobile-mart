@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductRequest;
 use App\Models\Brand;
+use App\Models\Order;
 use App\Models\Products;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -152,7 +153,7 @@ class ProductsController extends Controller
 
     public function totalProducts()
     {
-        $products = Products::get()->count();
+        $products = Order::where('order_status', '3')->get()->count();
         return $products;
     }
 }
