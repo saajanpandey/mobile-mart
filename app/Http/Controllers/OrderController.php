@@ -175,4 +175,5 @@ class OrderController extends Controller
         $orders = Order::where('order_status', '=', 1)->count();
         return $orders;
     }
+
 }

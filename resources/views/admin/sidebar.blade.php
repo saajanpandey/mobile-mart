@@ -177,7 +177,7 @@
                 </div>
                 </div>
 
-                @include('scripts')
+
                 <script src="{{asset('/admin/vendor/jquery/jquery.min.js')}}"></script>
                 <script src="{{asset('/admin/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
@@ -187,13 +187,17 @@
 
                 <script src="{{asset('/admin/js/sb-admin-2.min.js')}}"></script>
 
-                <script src="{{asset('/admin/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
+                {{-- <script src="{{asset('/admin/vendor/jquery-easing/jquery.easing.min.js')}}"></script>
 
                 <script src="{{asset('/admin/vendor/chart.js/Chart.min.js')}}"></script>
 
 
                 <script src="{{asset('/admin/js/demo/chart-area-demo.js')}}"></script>
-                <script src="{{asset('/admin/js/demo/chart-pie-demo.js')}}"></script>
+                <script src="{{asset('/admin/js/demo/chart-pie-demo.js')}}"></script> --}}
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js" integrity="sha512-TW5s0IT/IppJtu76UbysrBH9Hy/5X41OTAbQuffZFU6lQ1rdcLHzpU5BzVvr/YFykoiMYZVWlr/PX1mDcfM9Qg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/helpers.esm.min.js" integrity="sha512-urWBnIv+F027G24xDNigjxvIuwnWlWy94W2yx77VkISKLzKSohOKOubMDhtEF6LZcEH7gctmNSpxDqIW/zMmUg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.js" integrity="sha512-uLlukEfSLB7gWRBvzpDnLGvzNUluF19IDEdUoyGAtaO0MVSBsQ+g3qhLRL3GTVoEzKpc24rVT6X1Pr5fmsShBg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>

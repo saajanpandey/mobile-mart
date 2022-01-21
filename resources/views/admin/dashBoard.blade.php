@@ -10,7 +10,7 @@ Admin DashBoard
 
 <div class="row" style="margin: 1px">
 
-    
+
     <div class="col-xl-3 col-md-6 mb-4">
         <div class="card border-left-primary shadow h-100 py-2">
             <div class="card-body">
@@ -80,6 +80,11 @@ Admin DashBoard
                 </div>
             </div>
         </div>
+    </div>
+</div>
+<div class="card-body">
+    <div class="chart-area">
+        <canvas id="orderChart"></canvas>
     </div>
 </div>
 
