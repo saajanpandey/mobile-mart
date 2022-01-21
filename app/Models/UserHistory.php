@@ -9,5 +9,15 @@ class UserHistory extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id','product_id','price','order_date','delivery_date',''];
+    protected $fillable = ['user_id', 'order_id'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function order()
+    {
+        return $this->belongsTo(Order::class, 'order_id', 'id');
+    }
 }

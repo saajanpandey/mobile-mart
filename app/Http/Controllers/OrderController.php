@@ -6,6 +6,7 @@ use App\Exports\OrderExport;
 use App\Http\Requests\OrderRequest;
 use App\Models\Cart;
 use App\Models\Order;
+use App\Models\UserHistory;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use DB;
@@ -45,6 +46,7 @@ class OrderController extends Controller
         try {
             DB::beginTransaction();
             $order = new Order();
+            $history = new UserHistory();
             $data['user_id'] = $request->user_id;
             $data['address'] = $request->address;
             $data['cellphone_number'] = $request->cellphone_number;
@@ -60,6 +62,9 @@ class OrderController extends Controller
                 $orders->products()->attach($productId);
                 $item->delete();
             }
+            $history->user_id = $request->user_id;
+            $history->order_id = $orders->id;
+            $history->save();
             DB::commit();
             return redirect()->route('first.page')->with('message', 'Order Placed Successfully');
         } catch (\Exception $e) {
