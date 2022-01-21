@@ -102,8 +102,18 @@ class OrderController extends Controller
     {
         $order = Order::find($id);
         $order->order_status = $request->order_status;
-        $order->delivery_date = $request->delivery_date;
-        $order->save();
+        if ($order->order_status == 3) {
+            $order->delivery_date = $request->delivery_date;
+            $order->save();
+        }
+        if ($order->order_status == 4) {
+            $order->returned_date = $request->returned_date;
+            $order->save();
+        }
+        if ($order->order_status == 5) {
+            $order->redelivery_date = $request->redelivery_date;
+            $order->save();
+        }
         return redirect()->route('order.index')
             ->with('success', 'The data was updated successfully');;
     }
@@ -175,5 +185,4 @@ class OrderController extends Controller
         $orders = Order::where('order_status', '=', 1)->count();
         return $orders;
     }
-
 }
