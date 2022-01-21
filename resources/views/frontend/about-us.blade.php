@@ -26,9 +26,9 @@ About Us
 							<h4>Welcome To</h4>
                             <h2>Mobile Pasal</h2>
                             <p class="peragraph-blog">We are an authorised and genuine smartphone distributor located at Pako, NewRoad, Kathmandu. We keep our customers at the heart of everything we do and make sure we deliver the quality over quantity with many exciting offers as per festive and hot sales season. We started this store back in 2017 with a vision of one stop smartphone shop with both Andriod and iOS phones ranging from pocket friendly, mid-tier flagship killer to absolute flagship of a smartphone. We provide a year warranty services with free tempered glass on each of our purchases. Our delivery rates are superior than our competition and we tend to be of services to our customers in all the best way possible. Happy Shopping ! </p>
-                            <div class="overview-btn mt-40">
+                            {{-- <div class="overview-btn mt-40">
                                 <img src="assets/img/icon-img/signature.png" alt="Candidate Signature">
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     {{-- <div class="col-lg-6 col-md-12">
