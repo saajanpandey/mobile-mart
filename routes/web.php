@@ -13,6 +13,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\SearchController;
+use App\Models\Order;
 use App\Models\Products;
 use Illuminate\Support\Facades\Route;
 
@@ -99,6 +100,7 @@ Route::group(['middleware' => 'auth:admin'], function () {
 
 
     Route::get('/order', [OrderController::class, 'index'])->name('order.index');
+    Route::get('/detail/{id}', [OrderController::class, 'show'])->name('order.show');
     Route::get('/order/{id}/edit', [OrderController::class, 'edit'])->name('order.edit');
     Route::put('/order/{id}', [OrderController::class, 'update'])->name('order.update');
     Route::get('/order/{id}', [OrderController::class, 'destroy'])->name('order.destroy');

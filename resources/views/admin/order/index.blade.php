@@ -67,18 +67,20 @@
                                 {{$order->delivery_date??'-'}}
                             </td>
                             <td>
-                                <a href="{{route('order.edit',$order->id)}}" class="btn btn-primary btn-circle">
+                                <a href="{{route('order.edit',$order->id)}}" class="btn btn-primary btn-circle mb-2">
                                     <i class="fas fa-pen"></i>
                                 </a>
                                 {{-- <a href="{{route('order.destroy',$order->id)}}" class="btn btn-danger btn-circle">
                                     <i class="fas fa-trash"></i>
                                 </a> --}}
+
+                                <a href="{{route('order.show',$order->id)}}" class="btn btn-secondary btn-circle">
+                                    <i class="fa fa-eye"></i>
+                                </a>
+
                             </td>
                         </tr>
-
                         @endforeach
-
-
                     </tbody>
                 </table>
                 <div class="d-flex justify-content-center">
@@ -94,3 +96,4 @@
 </div>
 <!-- End of Main Content -->
 @endsection
+
