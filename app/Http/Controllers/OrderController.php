@@ -119,6 +119,10 @@ class OrderController extends Controller
             $order->redelivery_date = $request->redelivery_date;
             $order->save();
         }
+        if ($order->order_status == 6) {
+            $order->cancelation_date = $request->cancelation_date;
+            $order->save();
+        }
         return redirect()->route('order.index')
             ->with('success', 'The data was updated successfully');;
     }

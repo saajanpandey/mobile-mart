@@ -70,9 +70,9 @@
                                 <a href="{{route('order.edit',$order->id)}}" class="btn btn-primary btn-circle">
                                     <i class="fas fa-pen"></i>
                                 </a>
-                                <a href="{{route('order.destroy',$order->id)}}" class="btn btn-danger btn-circle">
+                                {{-- <a href="{{route('order.destroy',$order->id)}}" class="btn btn-danger btn-circle">
                                     <i class="fas fa-trash"></i>
-                                </a>
+                                </a> --}}
                             </td>
                         </tr>
 

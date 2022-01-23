@@ -7,6 +7,7 @@ return
             3 => 'Delivered',
             4 => 'Order Returned',
             5 => 'Re Deliver',
+            6 => 'Cancelled',
         ],
         'PAYMENT_METHOD' => [
             1 => 'Cash On Delivery'

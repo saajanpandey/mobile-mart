@@ -24,6 +24,7 @@ class CreateOrdersTable extends Migration
             $table->date('delivery_date')->nullable();
             $table->date('returned_date')->nullable();
             $table->date('redelivery_date')->nullable();
+            $table->date('cancelation_date')->nullable();
             $table->bigInteger('price');
             $table->timestamps();
         });

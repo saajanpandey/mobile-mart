@@ -67,6 +67,18 @@
                      @enderror
                     </div>
                   </div>
+
+                  <div class="form-group row d-none cancelDate">
+                    <label  class="col-sm-2 col-form-label">Cancelation Date</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control datetimepicker @error('cancelation_date') is-invalid @enderror" name="cancelation_date" value="{{$order->cancelation_date??''}}" id="datetimepicker">
+                      @error('redelivery_date')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                     @enderror
+                    </div>
+                  </div>
                  <button type="submit" class="btn btn-primary">Submit</button>
                </form>
          </div>
@@ -88,31 +100,43 @@
                 $('.deliveryDate').addClass('d-none');
                 $('.returnedDate').addClass('d-none');
                 $('.redeliveryDate').addClass('d-none');
+                $('.cancelDate').addClass('d-none');
             }
             if(selectedStatus==2)
             {
                 $('.deliveryDate').addClass('d-none');
                 $('.returnedDate').addClass('d-none');
                 $('.redeliveryDate').addClass('d-none');
+                $('.cancelDate').addClass('d-none');
 
             }if(selectedStatus==3)
             {
                 $('.deliveryDate').removeClass('d-none');
                 $('.returnedDate').addClass('d-none');
                 $('.redeliveryDate').addClass('d-none');
+                $('.cancelDate').addClass('d-none');
 
             }if(selectedStatus==4)
             {
                 $('.deliveryDate').addClass('d-none');
                 $('.returnedDate').removeClass('d-none');
                 $('.redeliveryDate').addClass('d-none');
+                $('.cancelDate').addClass('d-none');
+
 
             }if(selectedStatus==5)
             {
                 $('.deliveryDate').addClass('d-none');
                 $('.returnedDate').addClass('d-none');
                 $('.redeliveryDate').removeClass('d-none');
-
+                $('.cancelDate').addClass('d-none');
+            }
+            if(selectedStatus==6)
+            {
+                $('.deliveryDate').addClass('d-none');
+                $('.returnedDate').addClass('d-none');
+                $('.redeliveryDate').addClass('d-none');
+                $('.cancelDate').removeClass('d-none');
             }
         }
         $(document).on('change', '#orderStatus', function() {
