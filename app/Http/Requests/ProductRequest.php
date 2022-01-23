@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 
 class ProductRequest extends FormRequest
 {
@@ -21,16 +22,27 @@ class ProductRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(Request $request)
     {
-        return [
-            'name' => 'required|max:255',
-            'price' => 'required|numeric',
-            'description' => 'required|max:5000|',
-            'image' => 'required|mimes:png,jpg',
-            'status' => 'required|integer',
-            'brand_id' => 'required|integer',
-        ];
+        if ($request->method() == 'POST') {
+            return [
+                'name' => 'required|max:255',
+                'price' => 'required|numeric',
+                'description' => 'required|max:5000|',
+                'image' => 'required|mimes:png,jpg',
+                'status' => 'required|integer',
+                'brand_id' => 'required|integer',
+            ];
+        }
+        if ($request->method() == 'PUT' || $request->method() == 'PATCH') {
+            return [
+                'name' => 'required|max:255',
+                'price' => 'required|numeric',
+                'description' => 'required|max:5000|',
+                'status' => 'required|integer',
+                'brand_id' => 'required|integer',
+            ];
+        }
     }
 
     public function messages()

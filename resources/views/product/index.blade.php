@@ -60,6 +60,9 @@ Product List
                                 <a href="{{route('products.destroy',$product->id)}}" class="btn btn-danger btn-circle">
                                     <i class="fas fa-trash"></i>
                                 </a>
+                                <a href="{{route('products.edit.image',$product->id)}}" class="btn btn-secondary ">
+                                    Update Image
+                                </a>
                             </td>
                         </tr>
 

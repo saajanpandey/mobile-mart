@@ -95,24 +95,6 @@ class ProductsController extends Controller
     {
         // dd($request->all());
         $product = Products::find($id);
-        if ($request->hasFile('image')) {
-            $path = public_path() . '/uploads/productImages/';
-
-            //code for remove old file
-            $image_path = public_path() . '/uploads/productImages/' . $product->image;
-            if (file_exists($image_path)) {
-                File::delete($image_path);
-            }
-
-            //upload new file
-            $image = $request->file('image');
-            $name = time() . '.' . $image->getClientOriginalExtension();
-            $destinationPath = public_path('/uploads/productImages/');
-            $image->move($destinationPath, $name);
-
-            //for update in table
-            $product->update(['image' => $name]);
-        }
         $product->name = $request->name;
         $product->status = $request->status;
         $product->brand_id = $request->brand_id;
@@ -155,5 +137,35 @@ class ProductsController extends Controller
     {
         $products = Order::where('order_status', '3')->get()->count();
         return $products;
+    }
+
+    public function editImage($id)
+    {
+        $product = Products::find($id);
+        return view('product.imageEdit', compact('product'));
+    }
+
+    public function updateImage(Request $request, $id)
+    {
+        $product = Products::find($id);
+        if ($request->hasFile('image')) {
+            $path = public_path() . '/uploads/productImages/';
+
+            //code for remove old file
+            $image_path = public_path() . '/uploads/productImages/' . $product->image;
+            if (file_exists($image_path)) {
+                File::delete($image_path);
+            }
+
+            //upload new file
+            $image = $request->file('image');
+            $name = time() . '.' . $image->getClientOriginalExtension();
+            $destinationPath = public_path('/uploads/productImages/');
+            $image->move($destinationPath, $name);
+
+            //for update in table
+            $product->update(['image' => $name]);
+        }
+        return redirect()->route('products.index')->with('success', 'The image was updated successfully');
     }
 }
