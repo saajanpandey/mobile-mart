@@ -43,13 +43,13 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{route('products.index')}}">
                     <i class="fas fa-mobile"></i>
-                    <span>Products</span></a>
+                    <span>Product Management </span></a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link" href="{{route('brands.index')}}">
                     <i class="fab fa-bandcamp"></i>
-                    <span>Brands</span></a>
+                    <span>Brand Management</span></a>
             </li>
 
             <li class="nav-item">

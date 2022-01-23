@@ -25,7 +25,7 @@ Create Brand
                      @enderror
                     </div>
                   </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Create</button>
               </form>
         </div>
       </div>
