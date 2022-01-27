@@ -41,7 +41,7 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="contact-form-style mb-20">
-                                            <input class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Email Address" type="email">
+                                            <input class="form-control @error('email') is-invalid @enderror" name="email" placeholder="Email Address">
                                             @error('email')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>
