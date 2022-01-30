@@ -1,5 +1,4 @@
 @extends('admin.header')
-
 @section('title')
 Admin Login
 @endsection

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminChangePasswordController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\LoginController as AdminLoginController;
 use App\Http\Controllers\Admin\ShippingController;
@@ -64,10 +65,13 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin'], function () {
         Route::get('/logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
         Route::get('/{id}/edit', [AdminController::class, 'edit'])->name('admin.edit');
         Route::put('/{id}', [AdminController::class, 'update'])->name('admin.update');
+        Route::view('/change-password', 'admin.changePassword')->name('admin.change-password.view');
+        Route::post('/change-password', [AdminChangePasswordController::class, 'store'])->name('admin.password');
     });
 });
 
 Route::group(['middleware' => 'auth:admin'], function () {
+
 
     Route::get('/brands', [BrandController::class, 'index'])->name('brands.index');
     Route::get('/brands/{id}/edit', [BrandController::class, 'edit'])->name('brands.edit');
