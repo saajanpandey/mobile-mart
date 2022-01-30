@@ -167,7 +167,10 @@ class OrderController extends Controller
             'orderDate' => 'Order Date',
             'paymentMethod' => 'Payment Method',
             'orderStatus' => 'Order Status',
-            'deliveryDate' => 'Delivery Date'
+            'deliveryDate' => 'Delivery Date',
+            'returnedDate' => 'Returned Date',
+            'redeliveryDate' => 'ReDelivery Date',
+            'cancelledDate' => 'Cancelation Date',
         );
         foreach ($data as $datum) {
             try {
@@ -180,7 +183,11 @@ class OrderController extends Controller
                     'orderDate' => Carbon::parse($datum->order_date)->format('Y-m-d') ?? '-',
                     'paymentMethod' => Config::get('constants.PAYMENT_METHOD')[$datum->payment_method],
                     'orderStatus' => Config::get('constants.DELIVERY_STATUS')[$datum->order_status],
-                    'deliveryDate' => $datum->delivery_date ?? '-'
+                    'deliveryDate' => $datum->delivery_date ?? '-',
+                    'returnedDate' => $datum->returned_date ?? '-',
+                    'redeliveryDate' => $datum->returned_date ?? '-',
+                    'cancelledDate' => $datum->cancelation_date ?? '-'
+
                 );
             } catch (\Exception $e) {
                 continue;

@@ -28,6 +28,9 @@
                 <td>{{ $item['paymentMethod']??''}}</td>
                 <td>{{ $item['orderStatus']??''}}</td>
                 <td>{{ $item['deliveryDate']??''}}</td>
+                <td>{{$item['returnedDate']??''}}</td>
+                <td>{{$item['redeliveryDate']??''}}</td>
+                <td>{{$item['cancelledDate']??''}}</td>
             </tr>
             @endforeach
         </tbody>
