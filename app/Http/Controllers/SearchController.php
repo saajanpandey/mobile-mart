@@ -17,7 +17,7 @@ class SearchController extends Controller
         $this->validate($request, [
             'keyword' => 'required|string',
         ]);
-        $searches = Products::where('name', 'Like', '%' . $request->keyword . '%')->paginate(8);
+        $searches = Products::where('name', 'LIKE', '%' . $request->keyword . '%')->paginate(8);
         return view('frontend.search', compact('searches'));
     }
 

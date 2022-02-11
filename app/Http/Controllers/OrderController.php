@@ -139,6 +139,13 @@ class OrderController extends Controller
         //
     }
 
+    public function dateSearch(Request $request)
+    {
+        $dates = $request->datefilter;
+        $d = explode(' - ', $dates);
+        dd($d);
+    }
+
     public function getMonthly()
     {
         $start = Carbon::now()->startOfMonth();

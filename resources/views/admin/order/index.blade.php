@@ -8,6 +8,12 @@
     <div class="card shadow mb-4">
         <div class="card-header d-flex">
             <h4 class="m-0 font-weight-bold text-primary mr-auto">Order Status</h4>
+            <div style="margin-right:10px;">
+            <form action="{{route('order.search')}}" method="GET">
+                <input type="text" name="datefilter"/>
+                <button type="submit" class="btn btn-primary">Search</button>
+            </form>
+        </div>
             <a href="{{route('order.download')}}" class="btn btn-primary btn-circle .btn-sm ">
                 <i class="fa fa-download"></i>
              </a>
@@ -95,5 +101,27 @@
 
 </div>
 <!-- End of Main Content -->
+@endsection
+@section('scripts')
+<script type="text/javascript">
+    $(function() {
+
+      $('input[name="datefilter"]').daterangepicker({
+          autoUpdateInput: false,
+          locale: {
+              cancelLabel: 'Clear'
+          }
+      });
+
+      $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
+          $(this).val(picker.startDate.format('YYYY-MM-DD') + ' - ' + picker.endDate.format('YYYY-MM-DD'));
+      });
+
+      $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
+          $(this).val('');
+      });
+
+    });
+    </script>
 @endsection
 
