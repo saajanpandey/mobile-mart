@@ -143,7 +143,8 @@ class OrderController extends Controller
     {
         $dates = $request->datefilter;
         $d = explode(' - ', $dates);
-        dd($d);
+        $orders = Order::where('order_date', '>=', $d[0])->where('order_date', '<=', $d[1])->paginate(8);
+        return view('admin.order.index', compact('orders'));
     }
 
     public function getMonthly()
