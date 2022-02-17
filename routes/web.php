@@ -17,6 +17,7 @@ use App\Http\Controllers\SearchController;
 use App\Models\Order;
 use App\Models\Products;
 use Illuminate\Support\Facades\Route;
+use Auth;
 
 /*
 |--------------------------------------------------------------------------
