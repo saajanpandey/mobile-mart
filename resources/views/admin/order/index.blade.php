@@ -10,7 +10,7 @@
             <h4 class="m-0 font-weight-bold text-primary mr-auto">Order Status</h4>
             <div style="margin-right:10px;">
             <form action="{{route('order.search')}}" method="GET">
-                <input type="text" name="datefilter" placeholder="Search By Date"/>
+                <input type="text" name="datefilter" placeholder="Search By Date" required/>
                 <button type="submit" class="btn btn-primary">Search</button>
             </form>
         </div>

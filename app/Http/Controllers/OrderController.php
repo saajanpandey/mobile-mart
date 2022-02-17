@@ -11,6 +11,8 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use DB;
 use Config;
+use Str;
+use Illuminate\Support\Facades\URL;
 
 class OrderController extends Controller
 {
@@ -163,9 +165,18 @@ class OrderController extends Controller
         return $orders;
     }
 
-    public function downloadReport()
+    public function downloadReport(Request $request)
     {
-        $data = Order::all();
+        $url = URL::previous();
+        if (Str::contains($url, 'datefilter')) {
+            $explode = explode('datefilter=', $url);
+            $last = end($explode);
+            $d = explode('+-+', $last);
+            $orders = Order::where('order_date', '>=', $d[0])->where('order_date', '<=', $d[1])->get();
+            $data = $orders;
+        } else {
+            $data = Order::all();
+        }
         $titles = array(
             'customerName' => 'Customer Name',
             'address' => 'Address',
