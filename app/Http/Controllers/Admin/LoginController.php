@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\AdminLoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Auth;
@@ -23,22 +24,14 @@ class LoginController extends Controller
         return view('admin.auth.login');
     }
 
-    public function adminLogin(Request $request)
+    public function adminLogin(AdminLoginRequest $request)
     {
-        $this->validate($request, [
-            'email'   => 'required|email',
-            'password' => 'required', Password::min(6)
-                ->letters()
-                ->mixedCase()
-                ->numbers()
-                ->symbols()
-        ]);
 
         if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
 
             return redirect()->intended('/admin/dashboard');
         }
-        return back()->withInput($request->only('email', 'remember'));
+        return back()->withInput($request->only('email', 'remember'))->with('unsuccess', 'Login Unsucessfull. Please Try Again');
     }
     protected function guard()
     {
@@ -48,6 +41,6 @@ class LoginController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect()->intended('/admin/login');
+        return redirect()->intended('/admin/login')->with('unsuccess', 'Logout Successfully');
     }
 }

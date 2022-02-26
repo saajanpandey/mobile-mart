@@ -110,6 +110,9 @@ class OrderController extends Controller
     {
         $order = Order::find($id);
         $order->order_status = $request->order_status;
+        if ($order->order_status == 2) {
+            $order->save();
+        }
         if ($order->order_status == 3) {
             $order->delivery_date = $request->delivery_date;
             $order->save();

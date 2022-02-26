@@ -218,7 +218,7 @@
 <script>
     CKEDITOR.replace('my-editor');
     </script>
-    <script >
+    {{-- <script >
          $('.datetimepicker').datetimepicker({
             format: 'YYYY-MM-DD',
              icons:
@@ -230,6 +230,6 @@
 
         },
 });
-    </script>
+    </script> --}}
  </body>
 @endsection
