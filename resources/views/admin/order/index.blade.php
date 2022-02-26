@@ -73,9 +73,11 @@
                                 {{$order->delivery_date??'-'}}
                             </td>
                             <td>
+                                @if($order->order_status!=6)
                                 <a href="{{route('order.edit',$order->id)}}" class="btn btn-primary btn-circle mb-2">
                                     <i class="fas fa-pen"></i>
                                 </a>
+                                @endif
                                 {{-- <a href="{{route('order.destroy',$order->id)}}" class="btn btn-danger btn-circle">
                                     <i class="fas fa-trash"></i>
                                 </a> --}}
