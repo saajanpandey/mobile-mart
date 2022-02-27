@@ -96,6 +96,7 @@ class ProductsController extends Controller
         // dd($request->all());
         $product = Products::find($id);
         $product->name = $request->name;
+        $product->price = $request->price;
         $product->status = $request->status;
         $product->brand_id = $request->brand_id;
         $product->description = $request->description;
