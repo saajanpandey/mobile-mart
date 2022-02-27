@@ -28,7 +28,7 @@ class ProductRequest extends FormRequest
             return [
                 'name' => 'required|max:255',
                 'price' => 'required|numeric',
-                'description' => 'required|max:5000|',
+                'description' => 'required|max:50000|',
                 'image' => 'required|mimes:png,jpg',
                 'status' => 'required|integer',
                 'brand_id' => 'required|integer',
@@ -38,7 +38,7 @@ class ProductRequest extends FormRequest
             return [
                 'name' => 'required|max:255',
                 'price' => 'required|numeric',
-                'description' => 'required|max:5000|',
+                'description' => 'required|max:50000|',
                 'status' => 'required|integer',
                 'brand_id' => 'required|integer',
             ];
