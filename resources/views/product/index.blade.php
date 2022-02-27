@@ -48,9 +48,9 @@ Product List
                             </td>
                             <td>
                                 @if($product->status==0)
-                                <span class="badge bg-danger">Disable</span>
+                                <span class="badge badge-secondary">Disable</span>
                                 @else
-                                <span class="badge bg-primary">Enable</span>
+                                <span class="badge badge-success">Enable</span>
                                 @endif
                             </td>
                             <td>
