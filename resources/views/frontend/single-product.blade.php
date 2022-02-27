@@ -98,7 +98,7 @@
 
 
                                 <div class="ratting-author f-right">
-                                    <h3>{{$comment->user->name}}</h3>
+                                    <h3>{{$comment->user->full_name}}</h3>
                                     <span>{{\Carbon\Carbon::parse($comment->created_at)->format('H:i')}}</span>
                                     <span>{{\Carbon\Carbon::parse($comment->created_at)->format('d M Y')}}</span>
                                 </div>
@@ -120,7 +120,7 @@
                                     <input type="hidden" value="{{$product->id}}" name="postId">
                                     <div class="col-md-6">
                                         <div class="rating-form-style mb-20">
-                                            <input placeholder="Name" type="text" value="{{Auth::user()->name}}" readonly>
+                                            <input placeholder="Name" type="text" value="{{Auth::user()->full_name}}" readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
